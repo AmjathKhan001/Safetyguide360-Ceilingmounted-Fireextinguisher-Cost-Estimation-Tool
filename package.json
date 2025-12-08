@@ -1,0 +1,20 @@
+{
+  "name": "fire-extinguisher-calculator",
+  "version": "1.0.0",
+  "description": "Professional fire extinguisher calculation tool",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve ."
+  },
+  "keywords": [
+    "fire-safety",
+    "calculator",
+    "hse",
+    "safety-tools"
+  ],
+  "author": "SafetyGuide360",
+  "license": "MIT",
+  "dependencies": {
+    "serve": "^14.0.0"
+  }
+}

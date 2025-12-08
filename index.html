@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceiling Mounted Fire Extinguisher Cost Estimation Tool | SafetyGuide360</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Free professional tool to calculate ceiling mounted modular fire extinguisher requirements. Generate PDF/Excel quotes instantly. Perfect for safety consultants, contractors, and facility managers.">
+    <meta name="keywords" content="fire extinguisher calculator, modular fire system, safety equipment cost, fire protection quote, HSE tools, fire safety assessment">
+    <meta name="author" content="SafetyGuide360">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Modular Fire Extinguisher Calculator | SafetyGuide360">
+    <meta property="og:description" content="Free professional tool for fire safety calculations and commercial quotes">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://safetyguide360.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/fire-extinguisher.png">
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google AdSense Auto Ads -->
+    <script async src="https://pagead2.googletagmanager.com/pagead/js/adsbygoogle.js?client=ca-pub-6687860250561653"
+     crossorigin="anonymous"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VB6549D0LW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VB6549D0LW');
+    </script>
+
+    <style>
+        /* Print styling */
+        @media print {
+            body * { visibility: hidden; }
+            #resultsSection, #resultsSection * { visibility: visible; }
+            #resultsSection { position: absolute; left: 0; top: 0; width: 100%; margin: 0; padding: 0; }
+            .no-print { display: none !important; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+        }
+        
+        /* Custom Button Gradients */
+        .btn-amazon {
+            background: linear-gradient(to bottom, #f0c14b, #f7dfa5);
+            border-color: #a88734 #9c7e31 #846a29;
+            color: #111;
+        }
+        .btn-amazon:hover {
+            background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(240, 193, 75, 0.3);
+        }
+        
+        .btn-coffee {
+            background: linear-gradient(135deg, #6F4E37 0%, #A67B5B 100%);
+            color: white;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        .btn-coffee:hover {
+            background: linear-gradient(135deg, #5A3D2A 0%, #8B6B4F 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(111, 78, 55, 0.4);
+        }
+        
+        .btn-clearance {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+            color: white;
+            font-weight: bold;
+            border: none;
+        }
+        .btn-clearance:hover {
+            background: linear-gradient(135deg, #FF5252 0%, #FF7B7B 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Modal Styles */
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+        body.modal-active {
+            overflow-x: hidden;
+            overflow-y: hidden !important;
+        }
+        
+        /* Custom Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.5s ease-out;
+        }
+        
+        /* Tool Card Hover Effects */
+        .tool-card {
+            transition: all 0.3s ease;
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        /* Progress Bar */
+        .progress-bar {
+            height: 4px;
+            background: linear-gradient(90deg, #4CAF50 0%, #8BC34A 100%);
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans flex flex-col min-h-screen">
+
+    <!-- Progress Bar -->
+    <div class="fixed top-0 left-0 right-0 z-50">
+        <div id="progressBar" class="progress-bar" style="width: 0%"></div>
+    </div>
+
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="bg-red-600 text-white p-2 rounded-lg group-hover:bg-red-700 transition duration-300">
+                    <i class="fas fa-shield-alt text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-800 tracking-tight">SafetyGuide360</h1>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider">Professional Fire Safety Tools</p>
+                </div>
+            </a>
+            
+            <nav class="flex items-center space-x-4">
+                <a href="https://buymeacoffee.com/s.amjathkhan" target="_blank" class="btn-coffee px-4 py-2 rounded-full font-bold flex items-center space-x-2 transition-all shadow-sm">
+                    <i class="fas fa-coffee text-lg"></i>
+                    <span>Buy me a coffee</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-8 max-w-5xl flex-grow">
+
+        <!-- Amazon Associates Section -->
+        <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-col md:flex-row items-center justify-between bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+                <div class="flex items-center space-x-3 mb-3 md:mb-0">
+                    <i class="fab fa-amazon text-3xl text-yellow-600"></i>
+                    <div>
+                        <h3 class="font-bold text-gray-800">Need Fire Safety Equipment?</h3>
+                        <p class="text-sm text-gray-600">Browse top-rated extinguishers and safety gear on Amazon.</p>
+                    </div>
+                </div>
+                <a href="https://amzn.to/49YYGrJ" target="_blank" class="btn-amazon px-6 py-2 rounded shadow text-sm font-bold flex items-center hover:shadow-md transition mt-2 md:mt-0">
+                    Shop Now <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                </a>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center justify-between bg-gradient-to-r from-red-50 to-orange-50 p-4 rounded-xl shadow-sm border border-red-200">
+                <div class="flex items-center space-x-3 mb-3 md:mb-0">
+                    <i class="fas fa-fire-extinguisher text-2xl text-red-600"></i>
+                    <div>
+                        <h3 class="font-bold text-gray-800">Clearance Sale Store!</h3>
+                        <p class="text-sm text-gray-600">Upto 70% Off on Fire Safety Equipment</p>
+                    </div>
+                </div>
+                <a href="https://amzn.to/4p8ceG6" target="_blank" class="btn-clearance px-6 py-2 rounded shadow text-sm font-bold flex items-center hover:shadow-md transition mt-2 md:mt-0">
+                    Shop Deals <i class="fas fa-bolt ml-2 text-xs"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Google AdSense Ad Unit -->
+        <div class="mb-8 text-center bg-gray-100 rounded-lg overflow-hidden min-h-[100px] flex items-center justify-center border border-dashed border-gray-300">
+            <span class="text-xs text-gray-400 block mb-1 w-full text-center">Advertisement</span>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6687860250561653"
+                 data-ad-slot="3608723820"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <!-- Information Banner -->
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 p-6 mb-8 rounded-r-lg shadow-sm">
+            <h2 class="text-lg font-bold text-blue-900 mb-2"><i class="fas fa-info-circle mr-2"></i>How to Create a Commercial Offer</h2>
+            <p class="text-blue-800 text-sm mb-2">Use this professional tool to calculate requirements for Modular Fire Extinguishers and generate detailed PDF/Excel quotes for your clients.</p>
+            <ul class="list-disc list-inside text-sm text-blue-800 space-y-1 ml-2">
+                <li>Input your organization details and your customer's contact information</li>
+                <li>Select the extinguishing agent and cylinder size based on fire class</li>
+                <li>Add room dimensions to automatically calculate required units</li>
+                <li>Generate professional PDF/Excel quotes with GST calculations</li>
+            </ul>
+        </div>
+
+        <!-- Organization Details -->
+        <div class="bg-white rounded-xl shadow-md p-6 mb-6 border-t-4 border-gray-800">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-building mr-2 text-gray-500"></i> Organization Details</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-gray-700 mb-3 text-sm uppercase tracking-wide flex items-center">
+                        <i class="fas fa-user-tie mr-2"></i> Vendor (Your Details)
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">Company Name *</label>
+                            <input type="text" id="vendorName" placeholder="Enter your company name" class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">Contact Details *</label>
+                            <input type="text" id="vendorContact" placeholder="Email / Phone / Address" class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none transition">
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-gray-700 mb-3 text-sm uppercase tracking-wide flex items-center">
+                        <i class="fas fa-users mr-2"></i> Customer (Client Details)
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">Client Name *</label>
+                            <input type="text" id="clientName" placeholder="Enter client name" class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">Project Reference</label>
+                            <input type="text" id="projectRef" placeholder="Site Location / RFQ No." class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none transition">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Configuration -->
+        <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-cogs mr-2 text-gray-500"></i> Product Configuration</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block font-semibold mb-2 text-sm">Extinguisher Agent</label>
+                    <div class="relative">
+                        <select id="agentType" class="w-full p-3 border rounded bg-gray-50 appearance-none focus:ring-2 focus:ring-blue-500 outline-none transition">
+                            <option value="FE36">Clean Agent FE36 (Premium) - Best for Electronics</option>
+                            <option value="HFC236fa">Clean Agent HFC 236fa - Data Centers</option>
+                            <option value="MAP50">Dry Powder MAP-50% (Standard) - General Use</option>
+                            <option value="MAP90">Dry Powder MAP-90% (High Performance) - Industrial</option>
+                        </select>
+                        <i class="fas fa-chevron-down absolute right-4 top-4 text-gray-400 pointer-events-none"></i>
+                    </div>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-2 text-sm">Cylinder Capacity</label>
+                    <div class="relative">
+                        <select id="extinguisherSize" class="w-full p-3 border rounded bg-gray-50 appearance-none focus:ring-2 focus:ring-blue-500 outline-none transition">
+                            <option value="2">2 kg (Small Rooms - Covers 1.5 m²)</option>
+                            <option value="5">5 kg (Medium Rooms - Covers 2.5 m²)</option>
+                            <option value="10">10 kg (Large Rooms - Covers 5.0 m²)</option>
+                            <option value="15">15 kg (Industrial - Covers 6.0 m²)</option>
+                        </select>
+                        <i class="fas fa-chevron-down absolute right-4 top-4 text-gray-400 pointer-events-none"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Room Dimensions -->
+        <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-ruler-combined mr-2 text-gray-500"></i> Room Dimensions</h2>
+            
+            <!-- Add Room Form -->
+            <div class="bg-gradient-to-r from-gray-50 to-white p-4 rounded-lg border border-gray-200 mb-4 shadow-sm">
+                <div class="grid grid-cols-1 md:grid-cols-7 gap-3 items-end">
+                    <div class="md:col-span-3">
+                        <label class="block text-xs font-bold text-gray-500 mb-1">Room Description *</label>
+                        <input type="text" id="customRoomName" placeholder="e.g. Server Room, Office Hall, Warehouse" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 outline-none transition">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-bold text-gray-500 mb-1">Length (meters) *</label>
+                        <input type="number" id="customRoomLength" placeholder="0.0" step="0.1" min="0.1" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 outline-none transition">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-bold text-gray-500 mb-1">Width (meters) *</label>
+                        <div class="flex space-x-2">
+                            <input type="number" id="customRoomWidth" placeholder="0.0" step="0.1" min="0.1" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 outline-none transition">
+                            <button id="addCustomRoom" class="bg-gradient-to-r from-green-600 to-green-500 text-white px-4 py-2 rounded hover:from-green-700 hover:to-green-600 transition shadow-sm flex items-center">
+                                <i class="fas fa-plus mr-2"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 mt-2">* Press Enter in Width field to quickly add room</p>
+            </div>
+            
+            <!-- Rooms Table -->
+            <div class="overflow-hidden rounded-lg border border-gray-200 shadow-sm">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-gradient-to-r from-gray-100 to-gray-50 text-gray-600 font-semibold uppercase tracking-wider">
+                        <tr>
+                            <th class="p-3">Room Name</th>
+                            <th class="p-3 text-center">Dimensions (m)</th>
+                            <th class="p-3 text-center">Area (m²)</th>
+                            <th class="p-3 text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customRoomsList" class="divide-y divide-gray-200 bg-white">
+                        <!-- Rooms will be added here dynamically -->
+                    </tbody>
+                </table>
+                <div id="emptyState" class="p-8 text-center text-gray-400 bg-white">
+                    <i class="fas fa-door-closed text-4xl mb-3 opacity-30"></i>
+                    <p class="text-gray-500 font-medium mb-1">No rooms added yet</p>
+                    <p class="text-sm text-gray-400">Add your first room using the form above</p>
+                </div>
+            </div>
+            
+            <div class="flex justify-between items-center mt-4">
+                <span id="totalRooms" class="text-sm text-gray-500">Total Rooms: 0</span>
+                <span id="totalArea" class="text-sm font-medium text-gray-700">Total Area: 0 m²</span>
+            </div>
+        </div>
+
+        <!-- Calculate Button -->
+        <button id="calculateBtn" class="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white text-xl font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 mb-8 flex items-center justify-center gap-3 group">
+            <i class="fas fa-calculator group-hover:scale-110 transition-transform"></i> 
+            <span>Calculate Requirements & Generate Quote</span>
+        </button>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="hidden animate-fade-in-up">
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
+                <!-- Results Header -->
+                <div class="p-6 bg-gradient-to-r from-gray-900 to-gray-800 text-white flex flex-col md:flex-row justify-between items-start md:items-center">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white">Commercial Offer</h2>
+                        <p class="text-gray-300 text-sm">SafetyGuide360 Calculation Engine</p>
+                    </div>
+                    <div class="no-print mt-4 md:mt-0 flex flex-wrap gap-2">
+                        <button id="exportPDF" class="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 py-2 rounded shadow hover:shadow-lg transition flex items-center text-sm font-bold">
+                            <i class="fas fa-file-pdf mr-2"></i> Download PDF
+                        </button>
+                        <button id="exportExcel" class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 py-2 rounded shadow hover:shadow-lg transition flex items-center text-sm font-bold">
+                            <i class="fas fa-file-excel mr-2"></i> Download Excel
+                        </button>
+                        <button onclick="window.print()" class="bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700 text-white px-4 py-2 rounded shadow hover:shadow-lg transition flex items-center text-sm font-bold">
+                            <i class="fas fa-print mr-2"></i> Print
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Results Content -->
+                <div class="p-8">
+                    <!-- Vendor & Client Info -->
+                    <div class="flex flex-col md:flex-row justify-between mb-8 pb-6 border-b border-gray-200 gap-6">
+                        <div class="w-full md:w-1/2">
+                            <span class="text-xs uppercase font-bold text-gray-400 tracking-wider">From (Vendor)</span>
+                            <div class="mt-1">
+                                <p class="text-lg font-bold text-gray-800" id="displayVendorName">--</p>
+                                <p class="text-gray-600" id="displayVendorContact">--</p>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 md:text-right">
+                            <span class="text-xs uppercase font-bold text-gray-400 tracking-wider">To (Client)</span>
+                            <div class="mt-1">
+                                <p class="text-lg font-bold text-gray-800" id="displayClientName">--</p>
+                                <p class="text-gray-600" id="displayProjectRef">--</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Summary Card -->
+                    <div id="summaryContent" class="bg-gradient-to-r from-green-50 to-emerald-50 text-green-900 p-4 rounded-lg mb-6 border border-green-100 flex items-start shadow-sm">
+                        <i class="fas fa-check-circle mt-1 mr-3 text-green-500 text-xl"></i>
+                        <div>
+                            <p class="font-bold text-lg">Requirement Calculated Successfully!</p>
+                            <p class="text-sm opacity-90">Based on your room configurations, here's what you need:</p>
+                        </div>
+                    </div>
+
+                    <!-- Quote Table -->
+                    <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-sm mb-6">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="bg-gradient-to-r from-gray-50 to-gray-100 text-gray-600 uppercase text-xs leading-normal">
+                                    <th class="py-3 px-4 text-left">Description</th>
+                                    <th class="py-3 px-4 text-center">Qty</th>
+                                    <th class="py-3 px-4 text-right">Unit Rate (₹)</th>
+                                    <th class="py-3 px-4 text-right">Net Amount (₹)</th>
+                                    <th class="py-3 px-4 text-right">GST 18% (₹)</th>
+                                    <th class="py-3 px-4 text-right">Total (₹)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="quoteContent" class="text-gray-700 text-sm">
+                                <!-- Quote content will be added here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Room Breakdown (Accordion) -->
+                    <details class="group border border-gray-200 rounded-lg overflow-hidden no-print shadow-sm">
+                        <summary class="flex justify-between items-center p-4 bg-gray-50 cursor-pointer font-semibold text-gray-700 hover:bg-gray-100 transition">
+                            <span class="flex items-center">
+                                <i class="fas fa-table mr-2"></i>
+                                View Room-wise Breakdown
+                            </span>
+                            <span class="transition-transform group-open:rotate-180">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </summary>
+                        <div class="p-4 bg-white">
+                            <table class="w-full text-sm">
+                                <thead>
+                                    <tr class="border-b text-gray-500">
+                                        <th class="text-left p-2">Room</th>
+                                        <th class="text-center p-2">Area (m²)</th>
+                                        <th class="text-center p-2">Coverage per Unit</th>
+                                        <th class="text-center p-2">Units Required</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="breakdownContent">
+                                    <!-- Breakdown content will be added here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+                </div>
+                
+                <!-- Footer Note -->
+                <div class="bg-gradient-to-r from-gray-50 to-gray-100 p-4 text-center text-xs text-gray-500 border-t">
+                    <i class="fas fa-exclamation-circle mr-1"></i>
+                    Note: This is a system-generated estimate. Verify actual site conditions and consult with certified fire safety professionals before installation.
+                </div>
+            </div>
+        </div>
+
+        <!-- Explore More Tools Section -->
+        <div class="mt-12 mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center">
+                <i class="fas fa-tools mr-3 text-blue-500"></i>
+                Explore More Calculators & Tools
+            </h2>
+            <p class="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
+                We highly recommend these expert resources for specialized safety, HSE, and utility calculations. 
+                Each tool is designed to save you time and ensure compliance with industry standards.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Fire Safety Tool -->
+                <a href="https://www.firesafetytool.com" target="_blank" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-blue-300 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-100 p-3 rounded-lg mr-4">
+                            <i class="fas fa-fire-extinguisher text-red-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">Fire Safety Tool</h3>
+                            <p class="text-sm text-gray-500">Complete Fire Safety Solutions</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Comprehensive fire safety assessment, risk analysis, and compliance checking tools for commercial and residential buildings.
+                    </p>
+                    <div class="flex items-center text-blue-600 text-sm font-medium">
+                        <span>Explore Tool</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </a>
+
+                <!-- HSE Calculator -->
+                <a href="https://www.hsecalculator.com" target="_blank" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-green-300 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 p-3 rounded-lg mr-4">
+                            <i class="fas fa-hard-hat text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">HSE Calculator</h3>
+                            <p class="text-sm text-gray-500">Health & Safety Engineering</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Professional health, safety, and environment calculators for risk assessment, incident rates, PPE requirements, and compliance metrics.
+                    </p>
+                    <div class="flex items-center text-green-600 text-sm font-medium">
+                        <span>Explore Tool</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </a>
+
+                <!-- Web Tools Daily -->
+                <a href="https://www.webtoolsdaily.com" target="_blank" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-purple-300 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 p-3 rounded-lg mr-4">
+                            <i class="fas fa-globe text-purple-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">Web Tools Daily</h3>
+                            <p class="text-sm text-gray-500">Developer & Productivity Tools</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Daily updated collection of web development tools, productivity enhancers, code generators, and online utilities for professionals.
+                    </p>
+                    <div class="flex items-center text-purple-600 text-sm font-medium">
+                        <span>Explore Tools</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </a>
+
+                <!-- Fire Extinguisher Audit Tool -->
+                <a href="https://fire-extinguisher-audit-tool.vercel.app" target="_blank" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-orange-300 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-orange-100 p-3 rounded-lg mr-4">
+                            <i class="fas fa-clipboard-check text-orange-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">Fire Extinguisher Audit Tool</h3>
+                            <p class="text-sm text-gray-500">Inspection & Compliance</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Specialized tool for conducting thorough fire extinguisher audits, maintenance tracking, and compliance reporting.
+                    </p>
+                    <div class="flex items-center text-orange-600 text-sm font-medium">
+                        <span>Explore Tool</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </a>
+
+                <!-- Fire Safety Assessment Tool -->
+                <a href="https://firesafetyassessmenttool.vercel.app" target="_blank" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-red-300 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-100 p-3 rounded-lg mr-4">
+                            <i class="fas fa-shield-alt text-red-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">Fire Safety Assessment Tool</h3>
+                            <p class="text-sm text-gray-500">Risk Evaluation & Planning</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Advanced assessment tool for fire risk evaluation, safety planning, evacuation route analysis, and emergency response planning.
+                    </p>
+                    <div class="flex items-center text-red-600 text-sm font-medium">
+                        <span>Explore Tool</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Google AdSense Ad Unit -->
+        <div class="my-8 text-center bg-white p-4 rounded shadow-sm border border-dashed border-gray-300">
+             <span class="text-xs text-gray-400 block mb-2">Advertisement</span>
+             <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-format="fluid"
+                 data-ad-layout-key="-gw-3+1f-3d+2z"
+                 data-ad-client="ca-pub-6687860250561653"
+                 data-ad-slot="1234567890"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-b from-gray-900 to-black text-white py-12 mt-auto border-t-4 border-red-600">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-6 md:mb-0">
+                    <div class="flex items-center justify-center md:justify-start space-x-2 mb-3">
+                        <i class="fas fa-shield-alt text-red-500 text-3xl"></i>
+                        <span class="text-3xl font-bold tracking-wide">SafetyGuide360</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-3 max-w-xs">
+                        Your trusted partner for professional fire safety calculations, compliance tools, and safety engineering solutions.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col items-center md:items-end space-y-4">
+                    <div class="flex flex-wrap justify-center space-x-6 text-sm font-medium">
+                        <button onclick="toggleModal('privacyModal')" class="text-gray-400 hover:text-white transition-colors hover:underline">Privacy Policy</button>
+                        <button onclick="toggleModal('termsModal')" class="text-gray-400 hover:text-white transition-colors hover:underline">Terms of Service</button>
+                        <button onclick="toggleModal('affiliateModal')" class="text-gray-400 hover:text-white transition-colors hover:underline">Affiliate Disclosure</button>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <a href="https://amzn.to/49YYGrJ" target="_blank" class="text-yellow-500 hover:text-yellow-400 text-sm flex items-center">
+                            <i class="fab fa-amazon mr-1"></i> Amazon Store
+                        </a>
+                        <a href="https://amzn.to/4p8ceG6" target="_blank" class="text-red-400 hover:text-red-300 text-sm flex items-center">
+                            <i class="fas fa-fire mr-1"></i> Clearance Sale
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2025 SafetyGuide360. All rights reserved. | Professional Fire Safety Tools</p>
+                <p class="mt-2 text-xs">This tool is for estimation purposes only. Always consult with certified fire safety professionals.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals (Privacy, Terms, Affiliate) -->
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="modal fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="toggleModal('privacyModal')"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="flex justify-between items-center border-b pb-3 mb-4">
+                        <h3 class="text-2xl font-bold text-gray-900">Privacy Policy</h3>
+                        <button onclick="toggleModal('privacyModal')" class="text-gray-400 hover:text-gray-600 transition"><i class="fas fa-times text-xl"></i></button>
+                    </div>
+                    <div class="prose max-w-none text-sm text-gray-700 space-y-4">
+                        <p><strong>1. Commitment to Privacy:</strong> At SafetyGuide360, we believe that utility tools should be fast, effective, and prioritize user privacy. This policy explains what information we collect and how we use it.</p>
+                        <p><strong>2. Information We DO NOT Collect:</strong> 
+                            <ul class="list-disc pl-5">
+                                <li><strong>User Files and Input:</strong> The core functionality of our tools is processed entirely on your device. We never upload, save, or transmit your files or data to our servers.</li>
+                                <li><strong>PII:</strong> We do not require registration or collect personal identifiable information like names or emails unless you voluntarily engage with our support links.</li>
+                            </ul>
+                        </p>
+                        <p><strong>3. Log Data and Analytics:</strong> We collect anonymous, non-personally identifiable information (Log Data) such as IP address (anonymized), browser type, and pages visited via <strong>Google Analytics</strong> to improve user experience.</p>
+                        <p><strong>4. Third-Party Services:</strong> We use Google Analytics, Google AdSense, Amazon Associates, and Buy Me a Coffee. These services have their own privacy policies.</p>
+                        <p><strong>5. Cookies:</strong> We use cookies for functionality and analytics. You can refuse cookies, but some portions of the service may not function properly.</p>
+                        <p><strong>6. Contact:</strong> If you have questions about this policy, please contact us.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm transition" onclick="toggleModal('privacyModal')">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div id="termsModal" class="modal fixed inset-0 z-50 hidden overflow-y-auto">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" onclick="toggleModal('termsModal')"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="flex justify-between items-center border-b pb-3 mb-4">
+                        <h3 class="text-2xl font-bold text-gray-900">Terms of Service</h3>
+                        <button onclick="toggleModal('termsModal')" class="text-gray-400 hover:text-gray-600 transition"><i class="fas fa-times text-xl"></i></button>
+                    </div>
+                    <div class="prose max-w-none text-sm text-gray-700 space-y-4">
+                        <p><strong>1. Acceptance of Terms:</strong> By accessing SafetyGuide360, you agree to be bound by these Terms of Service.</p>
+                        <p><strong>2. Use License:</strong> Permission is granted to temporarily download one copy of the materials for personal, non-commercial transitory viewing only. You may not reverse engineer any software contained on SafetyGuide360.</p>
+                        <p><strong>3. Data Security:</strong> Our tools operate client-side. We do not save or store your personal inputs.</p>
+                        <p><strong>4. Disclaimer:</strong> The tools are provided "as is". SafetyGuide360 makes no warranties, expressed or implied, regarding accuracy or reliability.</p>
+                        <p><strong>5. Limitation of Liability:</strong> SafetyGuide360 shall not be liable for any damages resulting from the use or inability to use our tools.</p>
+                        <p><strong>6. Modifications:</strong> We may revise these terms at any time without notice.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm transition" onclick="toggleModal('termsModal')">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Affiliate Disclosure Modal -->
+    <div id="affiliateModal" class="modal fixed inset-0 z-50 hidden overflow-y-auto">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" onclick="toggleModal('affiliateModal')"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="flex justify-between items-center border-b pb-3 mb-4">
+                        <h3 class="text-2xl font-bold text-gray-900">Affiliate Disclosure</h3>
+                        <button onclick="toggleModal('affiliateModal')" class="text-gray-400 hover:text-gray-600 transition"><i class="fas fa-times text-xl"></i></button>
+                    </div>
+                    <div class="prose max-w-none text-sm text-gray-700 space-y-4">
+                        <p><strong>1. Introduction:</strong> SafetyGuide360 is a free service. To cover costs, we use affiliate links and advertising.</p>
+                        <p><strong>2. Affiliate Links:</strong> Some links on this website are affiliate links. If you purchase through them, we may receive a commission at no extra cost to you. We are a participant in the <strong>Amazon Services LLC Associates Program</strong>.</p>
+                        <p><strong>3. Editorial Integrity:</strong> Our recommendations are based on our belief in the product's value, regardless of affiliate relationships.</p>
+                        <p><strong>4. Advertising:</strong> We display advertisements through Google AdSense.</p>
+                        <p><strong>5. Support Us:</strong> You can support us by using our affiliate links, donating via "Buy Me a Coffee", or simply using our tools.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm transition" onclick="toggleModal('affiliateModal')">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main JavaScript -->
+    <script>
+        // --- MODAL LOGIC ---
+        function toggleModal(modalID) {
+            const modal = document.getElementById(modalID);
+            const body = document.body;
+            
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                body.classList.add('modal-active');
+            } else {
+                modal.classList.add('hidden');
+                body.classList.remove('modal-active');
+            }
+        }
+
+        // Close modal on Escape key
+        document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            if (evt.keyCode == 27) {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    if (!modal.classList.contains('hidden')) {
+                        modal.classList.add('hidden');
+                        document.body.classList.remove('modal-active');
+                    }
+                });
+            }
+        };
+
+        // --- CALCULATION LOGIC ---
+        const coverageFactors = { "2": 1.5, "5": 2.5, "10": 5.0, "15": 6.0 };
+        const productData = {
+            "FE36": {
+                "2": { desc: "CLEAN AGENT CHEMOURS FE36 MODULAR - 2KG (Premium Electronics Protection)", rate: 19851 },
+                "5": { desc: "CLEAN AGENT CHEMOURS FE36 MODULAR - 5KG (Data Center Grade)", rate: 41564 },
+                "10": { desc: "CLEAN AGENT CHEMOURS FE36 MODULAR - 10KG (Large Server Rooms)", rate: 73502 },
+                "15": { desc: "CLEAN AGENT CHEMOURS FE36 MODULAR - 15KG (Industrial Electronics)", rate: 105003 }
+            },
+            "HFC236fa": {
+                "2": { desc: "CLEAN AGENT HFC 236fa MODULAR - 2KG (Telecom Applications)", rate: 16650 },
+                "5": { desc: "CLEAN AGENT HFC 236fa MODULAR - 5KG (Medium Data Centers)", rate: 29901 },
+                "10": { desc: "CLEAN AGENT HFC 236fa MODULAR - 10KG (Large Facilities)", rate: 51876 },
+                "15": { desc: "CLEAN AGENT HFC 236fa MODULAR - 15KG (Industrial Applications)", rate: 84727 }
+            },
+            "MAP50": {
+                "2": { desc: "MAP-50% DRY POWDER MODULAR - 2KG (General Purpose)", rate: 3150 },
+                "5": { desc: "MAP-50% DRY POWDER MODULAR - 5KG (Commercial Buildings)", rate: 4288 },
+                "10": { desc: "MAP-50% DRY POWDER MODULAR - 10KG (Warehouses)", rate: 6501 },
+                "15": { desc: "MAP-50% DRY POWDER MODULAR - 15KG (Industrial Zones)", rate: 11001 }
+            },
+            "MAP90": {
+                "2": { desc: "MAP-90% DRY POWDER MODULAR - 2KG (High Risk Areas)", rate: 3876 },
+                "5": { desc: "MAP-90% DRY POWDER MODULAR - 5KG (Manufacturing Units)", rate: 5874 },
+                "10": { desc: "MAP-90% DRY POWDER MODULAR - 10KG (Large Industrial)", rate: 8751 },
+                "15": { desc: "MAP-90% DRY POWDER MODULAR - 15KG (Heavy Industry)", rate: 14501 }
+            }
+        };
+
+        let customRooms = [];
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progressBar = document.getElementById('progressBar');
+            const totalSteps = 3;
+            let completedSteps = 0;
+            
+            if (document.getElementById('vendorName').value && document.getElementById('clientName').value) completedSteps++;
+            if (document.getElementById('agentType').value) completedSteps++;
+            if (customRooms.length > 0) completedSteps++;
+            
+            const progress = (completedSteps / totalSteps) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        function addCustomRoom() {
+            const nameInput = document.getElementById('customRoomName');
+            const lenInput = document.getElementById('customRoomLength');
+            const widInput = document.getElementById('customRoomWidth');
+
+            const name = nameInput.value.trim();
+            const length = parseFloat(lenInput.value);
+            const width = parseFloat(widInput.value);
+            
+            if (!name || isNaN(length) || isNaN(width)) {
+                alert('Please enter a valid room name and dimensions.');
+                return;
+            }
+            if (length <= 0 || width <= 0) {
+                alert('Dimensions must be greater than zero.');
+                return;
+            }
+            
+            customRooms.push({ name, length, width });
+            updateRoomTable();
+            updateProgressBar();
+            
+            nameInput.value = '';
+            lenInput.value = '';
+            widInput.value = '';
+            nameInput.focus();
+        }
+
+        function updateRoomTable() {
+            const list = document.getElementById('customRoomsList');
+            const emptyState = document.getElementById('emptyState');
+            list.innerHTML = '';
+            
+            let totalArea = 0;
+            
+            if(customRooms.length === 0) {
+                emptyState.style.display = 'block';
+                list.parentElement.classList.add('hidden');
+            } else {
+                emptyState.style.display = 'none';
+                list.parentElement.classList.remove('hidden');
+                
+                customRooms.forEach((room, index) => {
+                    const area = (room.length * room.width).toFixed(2);
+                    totalArea += parseFloat(area);
+                    const row = document.createElement('tr');
+                    row.className = "border-b hover:bg-gray-50 transition";
+                    row.innerHTML = `
+                        <td class="p-3 font-medium text-gray-700">${room.name}</td>
+                        <td class="p-3 text-center text-gray-500">${room.length} × ${room.width}</td>
+                        <td class="p-3 text-center font-mono font-medium">${area} m²</td>
+                        <td class="p-3 text-right">
+                            <button onclick="removeRoom(${index})" class="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-full transition" title="Remove Room">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </td>
+                    `;
+                    list.appendChild(row);
+                });
+            }
+            
+            // Update summary
+            document.getElementById('totalRooms').textContent = `Total Rooms: ${customRooms.length}`;
+            document.getElementById('totalArea').textContent = `Total Area: ${totalArea.toFixed(2)} m²`;
+        }
+
+        window.removeRoom = function(index) {
+            if (confirm('Are you sure you want to remove this room?')) {
+                customRooms.splice(index, 1);
+                updateRoomTable();
+                updateProgressBar();
+            }
+        };
+
+        function calculateRequirements() {
+            if (customRooms.length === 0) {
+                alert('Please add at least one room to calculate.');
+                return;
+            }
+
+            const size = document.getElementById('extinguisherSize').value;
+            const agent = document.getElementById('agentType').value;
+            const coverage = coverageFactors[size];
+            
+            let totalArea = 0;
+            let totalExtinguishers = 0;
+            const breakdown = [];
+            
+            customRooms.forEach(room => {
+                const area = room.length * room.width;
+                const qty = Math.ceil(area / coverage);
+                totalArea += area;
+                totalExtinguishers += qty;
+                breakdown.push({ 
+                    name: room.name, 
+                    area: area.toFixed(2), 
+                    coverage: coverage.toFixed(1),
+                    qty 
+                });
+            });
+            
+            const product = productData[agent][size];
+            const netTotal = totalExtinguishers * product.rate;
+            const gst = netTotal * 0.18;
+            const grandTotal = netTotal + gst;
+            
+            displayResults(size, agent, totalArea, totalExtinguishers, breakdown, product, netTotal, gst, grandTotal);
+        }
+
+        function displayResults(size, agent, totalArea, totalQty, breakdown, product, net, gst, grand) {
+            const vName = document.getElementById('vendorName').value || "Vendor Organization";
+            const vContact = document.getElementById('vendorContact').value || "";
+            const cName = document.getElementById('clientName').value || "Valued Customer";
+            const cRef = document.getElementById('projectRef').value || "";
+
+            document.getElementById('displayVendorName').textContent = vName;
+            document.getElementById('displayVendorContact').textContent = vContact;
+            document.getElementById('displayClientName').textContent = cName;
+            document.getElementById('displayProjectRef').textContent = cRef;
+
+            const sizeText = document.getElementById('extinguisherSize').options[document.getElementById('extinguisherSize').selectedIndex].text.split('(')[0];
+            const agentText = document.getElementById('agentType').options[document.getElementById('agentType').selectedIndex].text.split('(')[0];
+            
+            document.getElementById('summaryContent').innerHTML = `
+                <i class="fas fa-check-circle mt-1 mr-3 text-green-500 text-xl"></i>
+                <div>
+                    <p class="font-bold text-lg">Requirement Calculated Successfully!</p>
+                    <p class="text-sm opacity-90">Based on a total area of <strong>${totalArea.toFixed(2)} m²</strong> across ${customRooms.length} rooms, you require <strong>${totalQty} units</strong> of <strong>${sizeText}</strong> ${agentText} modular extinguishers.</p>
+                </div>
+            `;
+            
+            // Room Breakdown
+            const bdContent = document.getElementById('breakdownContent');
+            bdContent.innerHTML = '';
+            breakdown.forEach(item => {
+                bdContent.innerHTML += `
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="p-2 font-medium">${item.name}</td>
+                        <td class="text-center p-2 text-gray-500">${item.area}</td>
+                        <td class="text-center p-2 text-gray-500">${item.coverage} m²/unit</td>
+                        <td class="text-center p-2 font-bold text-gray-800 bg-gray-50 rounded">${item.qty}</td>
+                    </tr>
+                `;
+            });
+            
+            // Quote Table
+            const quoteContent = document.getElementById('quoteContent');
+            quoteContent.innerHTML = `
+                <tr class="bg-white border-b hover:bg-gray-50 transition">
+                    <td class="p-4 font-medium">${product.desc}</td>
+                    <td class="p-4 text-center font-bold text-lg">${totalQty}</td>
+                    <td class="p-4 text-right font-mono text-gray-600">₹ ${product.rate.toLocaleString('en-IN')}</td>
+                    <td class="p-4 text-right font-mono text-gray-600">₹ ${net.toLocaleString('en-IN')}</td>
+                    <td class="p-4 text-right font-mono text-gray-600">₹ ${gst.toLocaleString('en-IN')}</td>
+                    <td class="p-4 text-right font-bold text-lg text-green-700 font-mono">₹ ${grand.toLocaleString('en-IN')}</td>
+                </tr>
+            `;
+            
+            // Show results
+            const resultsSection = document.getElementById('resultsSection');
+            resultsSection.classList.remove('hidden');
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Track calculation event
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'calculation_completed', {
+                    'event_category': 'engagement',
+                    'event_label': 'Fire Extinguisher Calculation',
+                    'value': totalQty
+                });
+            }
+        }
+
+        // --- EXPORT FUNCTIONS ---
+        function exportToPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF('p', 'mm', 'a4');
+            
+            // Header with gradient effect
+            doc.setFillColor(44, 62, 80);
+            doc.rect(0, 0, 210, 40, 'F');
+            
+            // Title
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(22);
+            doc.setFont(undefined, 'bold');
+            doc.text('COMMERCIAL QUOTATION', 105, 20, null, null, 'center');
+            
+            // Subtitle
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'normal');
+            doc.text('SafetyGuide360 Professional Fire Safety Tools', 105, 28, null, null, 'center');
+            
+            // Date
+            const now = new Date();
+            doc.text(`Generated: ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`, 105, 35, null, null, 'center');
+
+            doc.setTextColor(0, 0, 0);
+            doc.setFontSize(10);
+            
+            // Vendor Details
+            doc.setFont(undefined, 'bold');
+            doc.text('VENDOR DETAILS:', 20, 55);
+            doc.setFont(undefined, 'normal');
+            doc.text(document.getElementById('vendorName').value || 'Vendor Name', 20, 62);
+            doc.text(document.getElementById('vendorContact').value || '', 20, 67);
+
+            // Client Details
+            doc.setFont(undefined, 'bold');
+            doc.text('CLIENT DETAILS:', 120, 55);
+            doc.setFont(undefined, 'normal');
+            doc.text(document.getElementById('clientName').value || 'Client Name', 120, 62);
+            doc.text(document.getElementById('projectRef').value || '', 120, 67);
+
+            // Divider line
+            doc.setDrawColor(200, 200, 200);
+            doc.line(20, 75, 190, 75);
+
+            // Table Header
+            let y = 85;
+            doc.setFillColor(240, 240, 240);
+            doc.rect(20, y-5, 170, 10, 'F');
+            doc.setFont(undefined, 'bold');
+            doc.setFontSize(9);
+            doc.text('DESCRIPTION', 22, y+1);
+            doc.text('QTY', 110, y+1);
+            doc.text('RATE (₹)', 130, y+1);
+            doc.text('TOTAL (₹)', 165, y+1);
+            
+            // Table Content
+            y += 12;
+            doc.setFont(undefined, 'normal');
+            const quoteRow = document.querySelector('#quoteContent tr');
+            if(quoteRow) {
+                const cells = quoteRow.querySelectorAll('td');
+                const desc = cells[0].textContent;
+                const qty = cells[1].textContent;
+                const rate = cells[2].textContent;
+                const grandTotal = cells[5].textContent;
+
+                const splitDesc = doc.splitTextToSize(desc, 80);
+                const descHeight = splitDesc.length * 5;
+                
+                doc.text(splitDesc, 22, y);
+                doc.text(qty, 110, y);
+                doc.text(rate, 130, y);
+                doc.setFont(undefined, 'bold');
+                doc.text(grandTotal, 165, y);
+                
+                y += descHeight + 10;
+            }
+
+            // Summary Section
+            doc.setFontSize(11);
+            doc.setFont(undefined, 'bold');
+            doc.text('SUMMARY:', 20, y);
+            doc.setFont(undefined, 'normal');
+            y += 8;
+            
+            const totalRooms = customRooms.length;
+            const totalArea = customRooms.reduce((sum, room) => sum + (room.length * room.width), 0);
+            
+            doc.text(`• Total Rooms: ${totalRooms}`, 25, y);
+            y += 6;
+            doc.text(`• Total Area: ${totalArea.toFixed(2)} m²`, 25, y);
+            y += 6;
+            doc.text(`• Quotation Valid: 30 Days`, 25, y);
+            
+            // Footer
+            doc.setFontSize(8);
+            doc.setTextColor(150, 150, 150);
+            y = 280;
+            doc.text('This is a system-generated estimate for planning purposes.', 105, y, null, null, 'center');
+            y += 5;
+            doc.text('Always verify actual site conditions with certified fire safety professionals.', 105, y, null, null, 'center');
+            y += 5;
+            doc.text('© 2025 SafetyGuide360 | www.safetyguide360.com', 105, y, null, null, 'center');
+            
+            doc.save(`SafetyGuide360_Quotation_${new Date().getTime()}.pdf`);
+            
+            // Track PDF export
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'pdf_export', {
+                    'event_category': 'engagement',
+                    'event_label': 'PDF Export'
+                });
+            }
+        }
+
+        function exportToExcel() {
+            const wb = XLSX.utils.book_new();
+            
+            // Vendor and Client Details
+            const vendorName = document.getElementById('vendorName').value || 'Vendor Name';
+            const clientName = document.getElementById('clientName').value || 'Client Name';
+            
+            const wsData = [
+                ['SAFETYGUIDE360 - PROFESSIONAL COMMERCIAL OFFER'],
+                ['Generated: ' + new Date().toLocaleString()],
+                [],
+                ['VENDOR DETAILS', '', '', 'CLIENT DETAILS'],
+                ['Company:', vendorName, '', 'Client:', clientName],
+                ['Contact:', document.getElementById('vendorContact').value || '', '', 'Reference:', document.getElementById('projectRef').value || ''],
+                [],
+                ['PRODUCT DETAILS'],
+                ['Description', 'Quantity', 'Unit Rate (₹)', 'Net Total (₹)', 'GST 18% (₹)', 'Grand Total (₹)']
+            ];
+            
+            // Quote Data
+            const quoteRow = document.querySelector('#quoteContent tr');
+            if(quoteRow) {
+                const cells = quoteRow.querySelectorAll('td');
+                const parseCurrency = (str) => parseFloat(str.replace(/[₹,]/g, ''));
+                
+                wsData.push([
+                    cells[0].textContent,
+                    parseInt(cells[1].textContent),
+                    parseCurrency(cells[2].textContent),
+                    parseCurrency(cells[3].textContent),
+                    parseCurrency(cells[4].textContent),
+                    parseCurrency(cells[5].textContent)
+                ]);
+            }
+            
+            wsData.push([], ['ROOM BREAKDOWN']);
+            wsData.push(['Room Name', 'Length (m)', 'Width (m)', 'Area (m²)', 'Units Required']);
+            
+            customRooms.forEach(room => {
+                const area = (room.length * room.width).toFixed(2);
+                const coverage = coverageFactors[document.getElementById('extinguisherSize').value];
+                const qty = Math.ceil(room.length * room.width / coverage);
+                
+                wsData.push([
+                    room.name,
+                    room.length,
+                    room.width,
+                    parseFloat(area),
+                    qty
+                ]);
+            });
+            
+            wsData.push(
+                [],
+                ['SUMMARY'],
+                ['Total Rooms:', customRooms.length],
+                ['Total Area (m²):', customRooms.reduce((sum, room) => sum + (room.length * room.width), 0).toFixed(2)],
+                ['Quotation Valid Until:', new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString()],
+                [],
+                ['DISCLAIMER'],
+                ['This is a system-generated estimate. Always consult with certified fire safety professionals.'],
+                ['© 2025 SafetyGuide360 - Professional Fire Safety Tools']
+            );
+            
+            const ws = XLSX.utils.aoa_to_sheet(wsData);
+            
+            // Set column widths
+            const wscols = [
+                {wch: 40},  // Description
+                {wch: 10},  // Quantity
+                {wch: 15},  // Unit Rate
+                {wch: 15},  // Net Total
+                {wch: 15},  // GST
+                {wch: 20}   // Grand Total
+            ];
+            ws['!cols'] = wscols;
+            
+            // Add some styling through cell merging
+            ws['!merges'] = [
+                XLSX.utils.decode_range("A1:F1"),
+                XLSX.utils.decode_range("A2:F2"),
+                XLSX.utils.decode_range("A4:F4"),
+                XLSX.utils.decode_range("A7:F7"),
+                XLSX.utils.decode_range("A13:F13"),
+                XLSX.utils.decode_range("A19:F19"),
+                XLSX.utils.decode_range("A20:F20")
+            ];
+
+            XLSX.utils.book_append_sheet(wb, ws, "Commercial Quote");
+            XLSX.writeFile(wb, `SafetyGuide360_Quote_${new Date().getTime()}.xlsx`);
+            
+            // Track Excel export
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'excel_export', {
+                    'event_category': 'engagement',
+                    'event_label': 'Excel Export'
+                });
+            }
+        }
+
+        // --- EVENT LISTENERS ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Room management
+            document.getElementById('addCustomRoom').addEventListener('click', addCustomRoom);
+            
+            // Input fields for progress tracking
+            const trackedInputs = ['vendorName', 'vendorContact', 'clientName', 'agentType', 'extinguisherSize'];
+            trackedInputs.forEach(id => {
+                document.getElementById(id).addEventListener('input', updateProgressBar);
+                document.getElementById(id).addEventListener('change', updateProgressBar);
+            });
+            
+            // Calculate button
+            document.getElementById('calculateBtn').addEventListener('click', calculateRequirements);
+            
+            // Export buttons
+            document.getElementById('exportPDF').addEventListener('click', exportToPDF);
+            document.getElementById('exportExcel').addEventListener('click', exportToExcel);
+            
+            // Enter key to add room
+            document.getElementById('customRoomWidth').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') addCustomRoom();
+            });
+            
+            // Initialize progress bar
+            updateProgressBar();
+            
+            // Initialize room table
+            updateRoomTable();
+            
+            // Track page view
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_view', {
+                    'page_title': 'Fire Extinguisher Calculator',
+                    'page_location': window.location.href
+                });
+            }
+        });
+
+        // --- HELPER FUNCTIONS ---
+        function validateInputs() {
+            const required = ['vendorName', 'clientName'];
+            let isValid = true;
+            
+            required.forEach(id => {
+                const element = document.getElementById(id);
+                if (!element.value.trim()) {
+                    element.style.borderColor = '#ef4444';
+                    isValid = false;
+                } else {
+                    element.style.borderColor = '#d1d5db';
+                }
+            });
+            
+            return isValid;
+        }
+
+        function resetForm() {
+            if (confirm('Are you sure you want to reset all inputs?')) {
+                customRooms = [];
+                updateRoomTable();
+                updateProgressBar();
+                
+                const resetIds = ['vendorName', 'vendorContact', 'clientName', 'projectRef'];
+                resetIds.forEach(id => {
+                    document.getElementById(id).value = '';
+                });
+                
+                document.getElementById('resultsSection').classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
