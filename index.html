@@ -16,9 +16,19 @@
     <meta property="og:description" content="Free professional tool for fire safety calculations and commercial quotes">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://safetyguide360.com">
+    <meta property="og:image" content="https://img.icons8.com/color/480/000000/fire-extinguisher.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Modular Fire Extinguisher Calculator | SafetyGuide360">
+    <meta name="twitter:description" content="Free professional tool for fire safety calculations and commercial quotes">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://safetyguide360.com">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/fire-extinguisher.png">
+    <link rel="apple-touch-icon" href="https://img.icons8.com/color/180/000000/fire-extinguisher.png">
     
     <!-- External Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -39,6 +49,9 @@
       gtag('config', 'G-VB6549D0LW');
     </script>
 
+    <!-- Alibaba Verification -->
+    <meta name="microtip-cn-site-verification" content="fp8yUzPYNNQfwruXQGPkzlwyXLGsI5acRmlc4wiRG1d4U+K8oisRkw==">
+
     <style>
         /* Print styling */
         @media print {
@@ -47,6 +60,14 @@
             #resultsSection { position: absolute; left: 0; top: 0; width: 100%; margin: 0; padding: 0; }
             .no-print { display: none !important; }
             * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+        }
+        
+        /* Custom Color Variables */
+        :root {
+            --primary-red: #ff4c4c;
+            --primary-blue: #0099e5;
+            --primary-green: #34bf49;
+            --primary-black: #000000;
         }
         
         /* Custom Button Gradients */
@@ -62,26 +83,26 @@
         }
         
         .btn-coffee {
-            background: linear-gradient(135deg, #6F4E37 0%, #A67B5B 100%);
+            background: linear-gradient(135deg, #ff4c4c 0%, #ff7b7b 100%);
             color: white;
             font-family: 'Comic Sans MS', cursive, sans-serif;
         }
         .btn-coffee:hover {
-            background: linear-gradient(135deg, #5A3D2A 0%, #8B6B4F 100%);
+            background: linear-gradient(135deg, #ff3333 0%, #ff6b6b 100%);
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(111, 78, 55, 0.4);
+            box-shadow: 0 4px 15px rgba(255, 76, 76, 0.4);
         }
         
         .btn-clearance {
-            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+            background: linear-gradient(135deg, #34bf49 0%, #5cdb6b 100%);
             color: white;
             font-weight: bold;
             border: none;
         }
         .btn-clearance:hover {
-            background: linear-gradient(135deg, #FF5252 0%, #FF7B7B 100%);
+            background: linear-gradient(135deg, #2da83e 0%, #4bc75a 100%);
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            box-shadow: 0 4px 15px rgba(52, 191, 73, 0.4);
         }
 
         /* Modal Styles */
@@ -112,21 +133,121 @@
         /* Tool Card Hover Effects */
         .tool-card {
             transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
         .tool-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: #0099e5;
         }
         
         /* Progress Bar */
         .progress-bar {
             height: 4px;
-            background: linear-gradient(90deg, #4CAF50 0%, #8BC34A 100%);
+            background: linear-gradient(90deg, #ff4c4c 0%, #0099e5 50%, #34bf49 100%);
             transition: width 0.3s ease;
+        }
+        
+        /* Calculate button */
+        #calculateBtn {
+            background: linear-gradient(135deg, #0099e5 0%, #34bf49 100%);
+        }
+        #calculateBtn:hover {
+            background: linear-gradient(135deg, #0088cc 0%, #2da83e 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 153, 229, 0.3);
+        }
+        
+        /* Social sharing buttons */
+        .social-btn {
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Mobile optimization */
+        @media (max-width: 768px) {
+            .mobile-stack {
+                flex-direction: column !important;
+            }
+            .mobile-full {
+                width: 100% !important;
+            }
+            .mobile-text-center {
+                text-align: center !important;
+            }
+            .mobile-p-3 {
+                padding: 0.75rem !important;
+            }
+        }
+        
+        /* SEO Optimized Typography */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        /* Schema.org structured data highlight */
+        .structured-data {
+            display: none;
+        }
+        
+        /* Breadcrumb styling */
+        .breadcrumb {
+            font-size: 0.875rem;
+            color: #666;
+        }
+        
+        /* Accessibility improvements */
+        :focus {
+            outline: 2px solid #0099e5;
+            outline-offset: 2px;
+        }
+        
+        /* Loading skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
     </style>
 </head>
 <body class="bg-slate-50 text-gray-800 font-sans flex flex-col min-h-screen">
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Ceiling Mounted Fire Extinguisher Calculator",
+        "url": "https://safetyguide360.com",
+        "description": "Professional tool for calculating ceiling mounted modular fire extinguisher requirements and generating commercial quotes",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "SafetyGuide360"
+        }
+    }
+    </script>
 
     <!-- Progress Bar -->
     <div class="fixed top-0 left-0 right-0 z-50">
@@ -136,7 +257,7 @@
     <header class="bg-white shadow-md sticky top-0 z-40">
         <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
             <a href="index.html" class="flex items-center space-x-3 group">
-                <div class="bg-red-600 text-white p-2 rounded-lg group-hover:bg-red-700 transition duration-300">
+                <div class="bg-gradient-to-r from-blue-500 to-green-500 text-white p-2 rounded-lg group-hover:opacity-90 transition duration-300">
                     <i class="fas fa-shield-alt text-xl"></i>
                 </div>
                 <div>
@@ -145,14 +266,58 @@
                 </div>
             </a>
             
-            <nav class="flex items-center space-x-4">
-                <a href="https://buymeacoffee.com/s.amjathkhan" target="_blank" class="btn-coffee px-4 py-2 rounded-full font-bold flex items-center space-x-2 transition-all shadow-sm">
+            <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
+                <!-- Social Sharing Buttons -->
+                <div class="flex space-x-2">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://safetyguide360.com" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="social-btn bg-blue-600 hover:bg-blue-700 text-white"
+                       aria-label="Share on Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?url=https://safetyguide360.com&text=Check%20out%20this%20awesome%20Fire%20Safety%20Calculator%20Tool%20by%20SafetyGuide360" 
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="social-btn bg-black hover:bg-gray-800 text-white"
+                       aria-label="Share on Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://safetyguide360.com&title=Fire%20Safety%20Calculator%20Tool&summary=Professional%20tool%20for%20fire%20safety%20calculations" 
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="social-btn bg-blue-700 hover:bg-blue-800 text-white"
+                       aria-label="Share on LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://wa.me/?text=Check%20out%20this%20Fire%20Safety%20Calculator%20Tool%3A%20https%3A%2F%2Fsafetyguide360.com" 
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="social-btn bg-green-500 hover:bg-green-600 text-white"
+                       aria-label="Share on WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+                
+                <!-- Buy Me a Coffee Button -->
+                <a href="https://buymeacoffee.com/s.amjathkhan" target="_blank" rel="noopener noreferrer" class="btn-coffee px-4 py-2 rounded-full font-bold flex items-center space-x-2 transition-all shadow-sm ml-0 md:ml-4">
                     <i class="fas fa-coffee text-lg"></i>
                     <span>Buy me a coffee</span>
                 </a>
-            </nav>
+            </div>
         </div>
     </header>
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="bg-gray-100 border-b" aria-label="Breadcrumb">
+        <div class="container mx-auto px-4 py-2">
+            <ol class="breadcrumb flex items-center space-x-2 text-sm">
+                <li><a href="index.html" class="text-blue-600 hover:underline">Home</a></li>
+                <li><i class="fas fa-chevron-right text-gray-400 text-xs"></i></li>
+                <li class="text-gray-600">Ceiling Mounted Fire Extinguisher Calculator</li>
+            </ol>
+        </div>
+    </nav>
 
     <div class="container mx-auto px-4 py-8 max-w-5xl flex-grow">
 
@@ -166,27 +331,27 @@
                         <p class="text-sm text-gray-600">Browse top-rated extinguishers and safety gear on Amazon.</p>
                     </div>
                 </div>
-                <a href="https://amzn.to/49YYGrJ" target="_blank" class="btn-amazon px-6 py-2 rounded shadow text-sm font-bold flex items-center hover:shadow-md transition mt-2 md:mt-0">
+                <a href="https://amzn.to/49YYGrJ" target="_blank" rel="noopener noreferrer" class="btn-amazon px-6 py-2 rounded shadow text-sm font-bold flex items-center hover:shadow-md transition mt-2 md:mt-0">
                     Shop Now <i class="fas fa-external-link-alt ml-2 text-xs"></i>
                 </a>
             </div>
             
-            <div class="flex flex-col md:flex-row items-center justify-between bg-gradient-to-r from-red-50 to-orange-50 p-4 rounded-xl shadow-sm border border-red-200">
+            <div class="flex flex-col md:flex-row items-center justify-between bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-xl shadow-sm border border-green-200">
                 <div class="flex items-center space-x-3 mb-3 md:mb-0">
-                    <i class="fas fa-fire-extinguisher text-2xl text-red-600"></i>
+                    <i class="fas fa-fire-extinguisher text-2xl text-green-600"></i>
                     <div>
                         <h3 class="font-bold text-gray-800">Clearance Sale Store!</h3>
                         <p class="text-sm text-gray-600">Upto 70% Off on Fire Safety Equipment</p>
                     </div>
                 </div>
-                <a href="https://amzn.to/4p8ceG6" target="_blank" class="btn-clearance px-6 py-2 rounded shadow text-sm font-bold flex items-center hover:shadow-md transition mt-2 md:mt-0">
+                <a href="https://amzn.to/4p8ceG6" target="_blank" rel="noopener noreferrer" class="btn-clearance px-6 py-2 rounded shadow text-sm font-bold flex items-center hover:shadow-md transition mt-2 md:mt-0">
                     Shop Deals <i class="fas fa-bolt ml-2 text-xs"></i>
                 </a>
             </div>
         </div>
 
         <!-- Google AdSense Ad Unit -->
-        <div class="mb-8 text-center bg-gray-100 rounded-lg overflow-hidden min-h-[100px] flex items-center justify-center border border-dashed border-gray-300">
+        <div class="mb-8 text-center bg-gray-100 rounded-lg overflow-hidden min-h-[90px] flex items-center justify-center border border-dashed border-gray-300">
             <span class="text-xs text-gray-400 block mb-1 w-full text-center">Advertisement</span>
             <ins class="adsbygoogle"
                  style="display:block"
@@ -195,6 +360,12 @@
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <!-- Main Heading with Schema -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-3">Ceiling Mounted Fire Extinguisher Calculator</h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Professional tool for calculating modular fire extinguisher requirements and generating instant PDF/Excel quotes for your clients</p>
         </div>
 
         <!-- Information Banner -->
@@ -210,7 +381,7 @@
         </div>
 
         <!-- Organization Details -->
-        <div class="bg-white rounded-xl shadow-md p-6 mb-6 border-t-4 border-gray-800">
+        <section class="bg-white rounded-xl shadow-md p-6 mb-6 border-t-4 border-gray-800">
             <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-building mr-2 text-gray-500"></i> Organization Details</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-gray-50 p-4 rounded-lg">
@@ -219,12 +390,12 @@
                     </h3>
                     <div class="space-y-3">
                         <div>
-                            <label class="block text-xs text-gray-500 mb-1">Company Name *</label>
-                            <input type="text" id="vendorName" placeholder="Enter your company name" class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none transition">
+                            <label for="vendorName" class="block text-xs text-gray-500 mb-1">Company Name *</label>
+                            <input type="text" id="vendorName" placeholder="Enter your company name" class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none transition" required>
                         </div>
                         <div>
-                            <label class="block text-xs text-gray-500 mb-1">Contact Details *</label>
-                            <input type="text" id="vendorContact" placeholder="Email / Phone / Address" class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none transition">
+                            <label for="vendorContact" class="block text-xs text-gray-500 mb-1">Contact Details *</label>
+                            <input type="text" id="vendorContact" placeholder="Email / Phone / Address" class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none transition" required>
                         </div>
                     </div>
                 </div>
@@ -234,24 +405,24 @@
                     </h3>
                     <div class="space-y-3">
                         <div>
-                            <label class="block text-xs text-gray-500 mb-1">Client Name *</label>
-                            <input type="text" id="clientName" placeholder="Enter client name" class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none transition">
+                            <label for="clientName" class="block text-xs text-gray-500 mb-1">Client Name *</label>
+                            <input type="text" id="clientName" placeholder="Enter client name" class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none transition" required>
                         </div>
                         <div>
-                            <label class="block text-xs text-gray-500 mb-1">Project Reference</label>
+                            <label for="projectRef" class="block text-xs text-gray-500 mb-1">Project Reference</label>
                             <input type="text" id="projectRef" placeholder="Site Location / RFQ No." class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none transition">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Product Configuration -->
-        <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+        <section class="bg-white rounded-xl shadow-md p-6 mb-6">
             <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-cogs mr-2 text-gray-500"></i> Product Configuration</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <label class="block font-semibold mb-2 text-sm">Extinguisher Agent</label>
+                    <label for="agentType" class="block font-semibold mb-2 text-sm">Extinguisher Agent</label>
                     <div class="relative">
                         <select id="agentType" class="w-full p-3 border rounded bg-gray-50 appearance-none focus:ring-2 focus:ring-blue-500 outline-none transition">
                             <option value="FE36">Clean Agent FE36 (Premium) - Best for Electronics</option>
@@ -263,7 +434,7 @@
                     </div>
                 </div>
                 <div>
-                    <label class="block font-semibold mb-2 text-sm">Cylinder Capacity</label>
+                    <label for="extinguisherSize" class="block font-semibold mb-2 text-sm">Cylinder Capacity</label>
                     <div class="relative">
                         <select id="extinguisherSize" class="w-full p-3 border rounded bg-gray-50 appearance-none focus:ring-2 focus:ring-blue-500 outline-none transition">
                             <option value="2">2 kg (Small Rooms - Covers 1.5 m²)</option>
@@ -275,27 +446,27 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Room Dimensions -->
-        <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+        <section class="bg-white rounded-xl shadow-md p-6 mb-6">
             <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-ruler-combined mr-2 text-gray-500"></i> Room Dimensions</h2>
             
             <!-- Add Room Form -->
             <div class="bg-gradient-to-r from-gray-50 to-white p-4 rounded-lg border border-gray-200 mb-4 shadow-sm">
                 <div class="grid grid-cols-1 md:grid-cols-7 gap-3 items-end">
                     <div class="md:col-span-3">
-                        <label class="block text-xs font-bold text-gray-500 mb-1">Room Description *</label>
-                        <input type="text" id="customRoomName" placeholder="e.g. Server Room, Office Hall, Warehouse" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 outline-none transition">
+                        <label for="customRoomName" class="block text-xs font-bold text-gray-500 mb-1">Room Description *</label>
+                        <input type="text" id="customRoomName" placeholder="e.g. Server Room, Office Hall, Warehouse" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 outline-none transition" required>
                     </div>
                     <div class="md:col-span-2">
-                        <label class="block text-xs font-bold text-gray-500 mb-1">Length (meters) *</label>
-                        <input type="number" id="customRoomLength" placeholder="0.0" step="0.1" min="0.1" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 outline-none transition">
+                        <label for="customRoomLength" class="block text-xs font-bold text-gray-500 mb-1">Length (meters) *</label>
+                        <input type="number" id="customRoomLength" placeholder="0.0" step="0.1" min="0.1" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 outline-none transition" required>
                     </div>
                     <div class="md:col-span-2">
-                        <label class="block text-xs font-bold text-gray-500 mb-1">Width (meters) *</label>
+                        <label for="customRoomWidth" class="block text-xs font-bold text-gray-500 mb-1">Width (meters) *</label>
                         <div class="flex space-x-2">
-                            <input type="number" id="customRoomWidth" placeholder="0.0" step="0.1" min="0.1" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 outline-none transition">
+                            <input type="number" id="customRoomWidth" placeholder="0.0" step="0.1" min="0.1" class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 outline-none transition" required>
                             <button id="addCustomRoom" class="bg-gradient-to-r from-green-600 to-green-500 text-white px-4 py-2 rounded hover:from-green-700 hover:to-green-600 transition shadow-sm flex items-center">
                                 <i class="fas fa-plus mr-2"></i> Add
                             </button>
@@ -331,16 +502,16 @@
                 <span id="totalRooms" class="text-sm text-gray-500">Total Rooms: 0</span>
                 <span id="totalArea" class="text-sm font-medium text-gray-700">Total Area: 0 m²</span>
             </div>
-        </div>
+        </section>
 
         <!-- Calculate Button -->
-        <button id="calculateBtn" class="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white text-xl font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 mb-8 flex items-center justify-center gap-3 group">
+        <button id="calculateBtn" class="w-full bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 text-white text-xl font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 mb-8 flex items-center justify-center gap-3 group">
             <i class="fas fa-calculator group-hover:scale-110 transition-transform"></i> 
             <span>Calculate Requirements & Generate Quote</span>
         </button>
 
         <!-- Results Section -->
-        <div id="resultsSection" class="hidden animate-fade-in-up">
+        <section id="resultsSection" class="hidden animate-fade-in-up">
             <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
                 <!-- Results Header -->
                 <div class="p-6 bg-gradient-to-r from-gray-900 to-gray-800 text-white flex flex-col md:flex-row justify-between items-start md:items-center">
@@ -444,10 +615,10 @@
                     Note: This is a system-generated estimate. Verify actual site conditions and consult with certified fire safety professionals before installation.
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Explore More Tools Section -->
-        <div class="mt-12 mb-8">
+        <section class="mt-12 mb-8">
             <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center">
                 <i class="fas fa-tools mr-3 text-blue-500"></i>
                 Explore More Calculators & Tools
@@ -458,34 +629,34 @@
             </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Fire Safety Tool -->
-                <a href="https://www.firesafetytool.com" target="_blank" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-blue-300 transition-all duration-300">
+                <!-- Fire Safety Calculators -->
+                <a href="https://www.firesafetytool.com" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-red-300 transition-all duration-300">
                     <div class="flex items-center mb-4">
                         <div class="bg-red-100 p-3 rounded-lg mr-4">
                             <i class="fas fa-fire-extinguisher text-red-600 text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-gray-800">Fire Safety Tool</h3>
+                            <h3 class="font-bold text-gray-800">Fire Safety Calculators</h3>
                             <p class="text-sm text-gray-500">Complete Fire Safety Solutions</p>
                         </div>
                     </div>
                     <p class="text-gray-600 text-sm mb-4">
                         Comprehensive fire safety assessment, risk analysis, and compliance checking tools for commercial and residential buildings.
                     </p>
-                    <div class="flex items-center text-blue-600 text-sm font-medium">
+                    <div class="flex items-center text-red-600 text-sm font-medium">
                         <span>Explore Tool</span>
                         <i class="fas fa-arrow-right ml-2"></i>
                     </div>
                 </a>
 
-                <!-- HSE Calculator -->
-                <a href="https://www.hsecalculator.com" target="_blank" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-green-300 transition-all duration-300">
+                <!-- HSE Calculators -->
+                <a href="https://www.hsecalculator.com" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-green-300 transition-all duration-300">
                     <div class="flex items-center mb-4">
                         <div class="bg-green-100 p-3 rounded-lg mr-4">
                             <i class="fas fa-hard-hat text-green-600 text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-gray-800">HSE Calculator</h3>
+                            <h3 class="font-bold text-gray-800">HSE Calculators</h3>
                             <p class="text-sm text-gray-500">Health & Safety Engineering</p>
                         </div>
                     </div>
@@ -499,7 +670,7 @@
                 </a>
 
                 <!-- Web Tools Daily -->
-                <a href="https://www.webtoolsdaily.com" target="_blank" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-purple-300 transition-all duration-300">
+                <a href="https://www.webtoolsdaily.com" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-purple-300 transition-all duration-300">
                     <div class="flex items-center mb-4">
                         <div class="bg-purple-100 p-3 rounded-lg mr-4">
                             <i class="fas fa-globe text-purple-600 text-xl"></i>
@@ -518,19 +689,39 @@
                     </div>
                 </a>
 
-                <!-- Fire Extinguisher Audit Tool -->
-                <a href="https://fire-extinguisher-audit-tool.vercel.app" target="_blank" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-orange-300 transition-all duration-300">
+                <!-- HSE Toolkit -->
+                <a href="https://hse-toolkit.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-blue-300 transition-all duration-300">
                     <div class="flex items-center mb-4">
-                        <div class="bg-orange-100 p-3 rounded-lg mr-4">
-                            <i class="fas fa-clipboard-check text-orange-600 text-xl"></i>
+                        <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                            <i class="fas fa-toolbox text-blue-600 text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-gray-800">Fire Extinguisher Audit Tool</h3>
-                            <p class="text-sm text-gray-500">Inspection & Compliance</p>
+                            <h3 class="font-bold text-gray-800">HSE Toolkit</h3>
+                            <p class="text-sm text-gray-500">Complete Safety Management</p>
                         </div>
                     </div>
                     <p class="text-gray-600 text-sm mb-4">
-                        Specialized tool for conducting thorough fire extinguisher audits, maintenance tracking, and compliance reporting.
+                        Comprehensive Health, Safety and Environment toolkit for risk management, audits, compliance checks and safety documentation.
+                    </p>
+                    <div class="flex items-center text-blue-600 text-sm font-medium">
+                        <span>Explore Toolkit</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </a>
+
+                <!-- Fire Extinguisher Estimation Tool -->
+                <a href="https://fire-extinguisher-calculator.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-orange-300 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-orange-100 p-3 rounded-lg mr-4">
+                            <i class="fas fa-calculator text-orange-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">Fire Extinguisher Estimator</h3>
+                            <p class="text-sm text-gray-500">Portable Extinguisher Planning</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Specialized tool for calculating requirements and costs for portable fire extinguishers in various building types.
                     </p>
                     <div class="flex items-center text-orange-600 text-sm font-medium">
                         <span>Explore Tool</span>
@@ -538,27 +729,87 @@
                     </div>
                 </a>
 
-                <!-- Fire Safety Assessment Tool -->
-                <a href="https://firesafetyassessmenttool.vercel.app" target="_blank" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-red-300 transition-all duration-300">
+                <!-- Fire Extinguisher Audit Tool -->
+                <a href="https://fire-extinguisher-audit-tool.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-teal-300 transition-all duration-300">
                     <div class="flex items-center mb-4">
-                        <div class="bg-red-100 p-3 rounded-lg mr-4">
-                            <i class="fas fa-shield-alt text-red-600 text-xl"></i>
+                        <div class="bg-teal-100 p-3 rounded-lg mr-4">
+                            <i class="fas fa-clipboard-check text-teal-600 text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-gray-800">Fire Safety Assessment Tool</h3>
-                            <p class="text-sm text-gray-500">Risk Evaluation & Planning</p>
+                            <h3 class="font-bold text-gray-800">Fire Extinguisher Audit</h3>
+                            <p class="text-sm text-gray-500">Inspection & Compliance</p>
                         </div>
                     </div>
                     <p class="text-gray-600 text-sm mb-4">
-                        Advanced assessment tool for fire risk evaluation, safety planning, evacuation route analysis, and emergency response planning.
+                        Specialized tool for conducting thorough fire extinguisher audits, maintenance tracking, and compliance reporting.
                     </p>
-                    <div class="flex items-center text-red-600 text-sm font-medium">
+                    <div class="flex items-center text-teal-600 text-sm font-medium">
                         <span>Explore Tool</span>
                         <i class="fas fa-arrow-right ml-2"></i>
                     </div>
                 </a>
+
+                <!-- Kitchen Suppression System -->
+                <a href="https://kitchen-fire-suppression-calculator.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-yellow-300 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-yellow-100 p-3 rounded-lg mr-4">
+                            <i class="fas fa-utensils text-yellow-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">Kitchen Suppression System</h3>
+                            <p class="text-sm text-gray-500">Commercial Kitchen Safety</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Calculator for commercial kitchen fire suppression systems, hood protection, and wet chemical extinguishing requirements.
+                    </p>
+                    <div class="flex items-center text-yellow-600 text-sm font-medium">
+                        <span>Explore Tool</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </a>
+
+                <!-- FM-200 Room Flooding System -->
+                <a href="https://fm-200-room-flooding-system-calcula.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-indigo-300 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 p-3 rounded-lg mr-4">
+                            <i class="fas fa-flood text-indigo-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">FM-200 Room Flooding</h3>
+                            <p class="text-sm text-gray-500">Clean Agent Systems</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Calculator for FM-200 and other clean agent room flooding systems for data centers, server rooms, and sensitive equipment.
+                    </p>
+                    <div class="flex items-center text-indigo-600 text-sm font-medium">
+                        <span>Explore Tool</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </a>
+
+                <!-- Utility Tools -->
+                <a href="https://www.dailysmarttool.com" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-pink-300 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-pink-100 p-3 rounded-lg mr-4">
+                            <i class="fas fa-wrench text-pink-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">Daily Smart Tool</h3>
+                            <p class="text-sm text-gray-500">Utility & Productivity Tools</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Collection of daily useful tools for calculations, conversions, text processing, and productivity enhancement.
+                    </p>
+                    <div class="flex items-center text-pink-600 text-sm font-medium">
+                        <span>Explore Tools</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </div>
+                </a>
             </div>
-        </div>
+        </section>
 
         <!-- Google AdSense Ad Unit -->
         <div class="my-8 text-center bg-white p-4 rounded shadow-sm border border-dashed border-gray-300">
@@ -568,7 +819,7 @@
                  data-ad-format="fluid"
                  data-ad-layout-key="-gw-3+1f-3d+2z"
                  data-ad-client="ca-pub-6687860250561653"
-                 data-ad-slot="1234567890"></ins>
+                 data-ad-slot="3608723820"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
@@ -586,6 +837,37 @@
                     <p class="text-gray-400 text-sm mt-3 max-w-xs">
                         Your trusted partner for professional fire safety calculations, compliance tools, and safety engineering solutions.
                     </p>
+                    <!-- Social Sharing in Footer -->
+                    <div class="flex space-x-3 mt-4 justify-center md:justify-start">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://safetyguide360.com" 
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="text-gray-400 hover:text-white transition"
+                           aria-label="Share on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?url=https://safetyguide360.com" 
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="text-gray-400 hover:text-white transition"
+                           aria-label="Share on Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://safetyguide360.com" 
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="text-gray-400 hover:text-white transition"
+                           aria-label="Share on LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://wa.me/?text=Check%20out%20SafetyGuide360%20-%20Professional%20Fire%20Safety%20Tools%3A%20https%3A%2F%2Fsafetyguide360.com" 
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="text-gray-400 hover:text-white transition"
+                           aria-label="Share on WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="flex flex-col items-center md:items-end space-y-4">
@@ -596,10 +878,10 @@
                     </div>
                     
                     <div class="flex space-x-4">
-                        <a href="https://amzn.to/49YYGrJ" target="_blank" class="text-yellow-500 hover:text-yellow-400 text-sm flex items-center">
+                        <a href="https://amzn.to/49YYGrJ" target="_blank" rel="noopener noreferrer" class="text-yellow-500 hover:text-yellow-400 text-sm flex items-center">
                             <i class="fab fa-amazon mr-1"></i> Amazon Store
                         </a>
-                        <a href="https://amzn.to/4p8ceG6" target="_blank" class="text-red-400 hover:text-red-300 text-sm flex items-center">
+                        <a href="https://amzn.to/4p8ceG6" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 text-sm flex items-center">
                             <i class="fas fa-fire mr-1"></i> Clearance Sale
                         </a>
                     </div>
@@ -609,6 +891,7 @@
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
                 <p>&copy; 2025 SafetyGuide360. All rights reserved. | Professional Fire Safety Tools</p>
                 <p class="mt-2 text-xs">This tool is for estimation purposes only. Always consult with certified fire safety professionals.</p>
+                <p class="mt-1 text-xs">Google AdSense Publisher ID: pub-6687860250561653</p>
             </div>
         </div>
     </footer>
@@ -688,7 +971,7 @@
                         <p><strong>1. Introduction:</strong> SafetyGuide360 is a free service. To cover costs, we use affiliate links and advertising.</p>
                         <p><strong>2. Affiliate Links:</strong> Some links on this website are affiliate links. If you purchase through them, we may receive a commission at no extra cost to you. We are a participant in the <strong>Amazon Services LLC Associates Program</strong>.</p>
                         <p><strong>3. Editorial Integrity:</strong> Our recommendations are based on our belief in the product's value, regardless of affiliate relationships.</p>
-                        <p><strong>4. Advertising:</strong> We display advertisements through Google AdSense.</p>
+                        <p><strong>4. Advertising:</strong> We display advertisements through Google AdSense (Publisher ID: pub-6687860250561653).</p>
                         <p><strong>5. Support Us:</strong> You can support us by using our affiliate links, donating via "Buy Me a Coffee", or simply using our tools.</p>
                     </div>
                 </div>
@@ -826,7 +1109,7 @@
                         <td class="p-3 text-center text-gray-500">${room.length} × ${room.width}</td>
                         <td class="p-3 text-center font-mono font-medium">${area} m²</td>
                         <td class="p-3 text-right">
-                            <button onclick="removeRoom(${index})" class="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-full transition" title="Remove Room">
+                            <button onclick="removeRoom(${index})" class="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-full transition" title="Remove Room" aria-label="Remove room ${room.name}">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
                         </td>
@@ -1200,6 +1483,9 @@
                     'page_location': window.location.href
                 });
             }
+            
+            // Load AdSense ads
+            (adsbygoogle = window.adsbygoogle || []).push({});
         });
 
         // --- HELPER FUNCTIONS ---
@@ -1210,7 +1496,7 @@
             required.forEach(id => {
                 const element = document.getElementById(id);
                 if (!element.value.trim()) {
-                    element.style.borderColor = '#ef4444';
+                    element.style.borderColor = '#ff4c4c';
                     isValid = false;
                 } else {
                     element.style.borderColor = '#d1d5db';
@@ -1234,6 +1520,31 @@
                 document.getElementById('resultsSection').classList.add('hidden');
             }
         }
+        
+        // Social Sharing Analytics
+        function trackSocialShare(platform) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'social_share', {
+                    'event_category': 'engagement',
+                    'event_label': platform,
+                    'value': 1
+                });
+            }
+        }
+        
+        // Add tracking to social buttons
+        document.querySelectorAll('a[href*="facebook.com/sharer"]').forEach(btn => {
+            btn.addEventListener('click', () => trackSocialShare('facebook'));
+        });
+        document.querySelectorAll('a[href*="twitter.com/intent/tweet"]').forEach(btn => {
+            btn.addEventListener('click', () => trackSocialShare('twitter'));
+        });
+        document.querySelectorAll('a[href*="linkedin.com/shareArticle"]').forEach(btn => {
+            btn.addEventListener('click', () => trackSocialShare('linkedin'));
+        });
+        document.querySelectorAll('a[href*="wa.me"]').forEach(btn => {
+            btn.addEventListener('click', () => trackSocialShare('whatsapp'));
+        });
     </script>
 </body>
 </html>
