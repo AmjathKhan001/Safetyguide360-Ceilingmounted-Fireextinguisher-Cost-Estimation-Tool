@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /*.css
+Allow: /*.js
+
+Sitemap: https://safetyguide360.com/sitemap.xml
+
+# Crawl delay for search engines (in seconds)
+Crawl-delay: 1
+
+# Disallow for search engines (if needed in future)
+# Disallow: /private/
+# Disallow: /admin/
