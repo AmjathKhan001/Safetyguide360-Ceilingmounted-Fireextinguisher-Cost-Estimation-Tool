@@ -1,20 +1,39 @@
 {
-  "name": "fire-extinguisher-calculator",
-  "version": "1.0.0",
-  "description": "Professional fire extinguisher calculation tool",
+  "name": "safetyguide360-fire-extinguisher-calculator",
+  "version": "2.0.0",
+  "description": "Professional ceiling mounted modular fire extinguisher calculator with PDF/Excel quotes - SafetyGuide360",
   "main": "index.html",
   "scripts": {
-    "start": "serve ."
+    "start": "serve .",
+    "dev": "serve .",
+    "test": "echo \"No tests specified\" && exit 0"
   },
   "keywords": [
     "fire-safety",
     "calculator",
     "hse",
-    "safety-tools"
+    "safety-tools",
+    "fire-extinguisher",
+    "modular-fire-system",
+    "safety-engineering",
+    "fire-protection",
+    "commercial-quote",
+    "safetyguide360"
   ],
   "author": "SafetyGuide360",
   "license": "MIT",
   "dependencies": {
     "serve": "^14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AmjathKhan001/Ceiling-Fire-Extinguisher-Cost-Estimation-Tool"
+  },
+  "homepage": "https://safetyguide360.com",
+  "bugs": {
+    "url": "https://github.com/AmjathKhan001/Ceiling-Fire-Extinguisher-Cost-Estimation-Tool/issues"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
