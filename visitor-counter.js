@@ -55,33 +55,10 @@ class VisitorCounter {
         // Format number with commas
         const formattedCount = count.toLocaleString();
         
-        // Create or update counter element
-        let counterElement = document.getElementById(this.counterElementId);
-        
-        if (!counterElement) {
-            // Create counter element if it doesn't exist
-            counterElement = document.createElement('div');
-            counterElement.id = this.counterElementId;
-            counterElement.className = 'visitor-counter';
-            
-            // Add to header or footer as needed
-            const header = document.querySelector('header .container');
-            if (header) {
-                const counterContainer = document.createElement('div');
-                counterContainer.className = 'bg-gradient-to-r from-blue-100 to-green-100 text-blue-800 text-sm px-4 py-2 rounded-full shadow-sm flex items-center';
-                counterContainer.innerHTML = `
-                    <i class="fas fa-users mr-2"></i>
-                    <span class="font-bold" id="counterValue">${formattedCount}</span>
-                    <span class="ml-1">Visitors</span>
-                `;
-                header.appendChild(counterContainer);
-            }
-        } else {
-            // Update existing counter
-            const valueElement = counterElement.querySelector('#counterValue');
-            if (valueElement) {
-                valueElement.textContent = formattedCount;
-            }
+        // Update counter element
+        const counterElement = document.getElementById(this.counterElementId);
+        if (counterElement) {
+            counterElement.textContent = formattedCount;
         }
         
         // Add animation effect
@@ -89,7 +66,7 @@ class VisitorCounter {
     }
 
     animateCounter() {
-        const counterElement = document.querySelector('#counterValue');
+        const counterElement = document.getElementById(this.counterElementId);
         if (counterElement) {
             counterElement.classList.add('animate-pulse');
             setTimeout(() => {
