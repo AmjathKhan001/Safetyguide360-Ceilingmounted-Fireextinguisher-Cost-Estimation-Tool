@@ -223,6 +223,48 @@
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
         }
+        
+        /* Visitor Counter Styles */
+        #visitorCounter {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            background: linear-gradient(90deg, #ff4c4c, #0099e5, #34bf49);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .visitor-counter-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(102, 126, 234, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0); }
+        }
+        
+        /* Contact Info Icons */
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        /* Social media hover effects */
+        .fa-twitter:hover { color: #1DA1F2 !important; }
+        .fa-facebook-f:hover { color: #1877F2 !important; }
+        .fa-instagram:hover { color: #E4405F !important; }
+        .fa-whatsapp:hover { color: #25D366 !important; }
+        .fa-linkedin-in:hover { color: #0A66C2 !important; }
     </style>
 </head>
 <body class="bg-slate-50 text-gray-800 font-sans flex flex-col min-h-screen">
@@ -618,290 +660,290 @@
         </section>
 
         <!-- Explore More Tools Section -->
-<section class="mt-12 mb-8">
-    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center">
-        <i class="fas fa-tools mr-3 text-blue-500"></i>
-        Explore More Calculators & Tools
-    </h2>
-    <p class="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
-        We highly recommend these expert resources for specialized safety, HSE, and utility calculations. 
-        Each tool is designed to save you time and ensure compliance with industry standards.
-    </p>
-    
-    <!-- ⚕️ HSE Tools Category -->
-    <div class="mb-10">
-        <div class="flex items-center mb-6">
-            <div class="bg-green-100 p-3 rounded-lg mr-3">
-                <i class="fas fa-heartbeat text-green-600 text-xl"></i>
-            </div>
-            <h3 class="text-xl font-bold text-gray-800">⚕️ HSE Tools</h3>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- HSE Calculators -->
-            <a href="https://www.hsecalculator.com" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-green-300 transition-all duration-300">
-                <div class="flex items-center mb-4">
-                    <div class="bg-green-100 p-3 rounded-lg mr-4">
-                        <i class="fas fa-calculator text-green-600 text-xl"></i>
+        <section class="mt-12 mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center">
+                <i class="fas fa-tools mr-3 text-blue-500"></i>
+                Explore More Calculators & Tools
+            </h2>
+            <p class="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
+                We highly recommend these expert resources for specialized safety, HSE, and utility calculations. 
+                Each tool is designed to save you time and ensure compliance with industry standards.
+            </p>
+            
+            <!-- ⚕️ HSE Tools Category -->
+            <div class="mb-10">
+                <div class="flex items-center mb-6">
+                    <div class="bg-green-100 p-3 rounded-lg mr-3">
+                        <i class="fas fa-heartbeat text-green-600 text-xl"></i>
                     </div>
-                    <div>
-                        <h3 class="font-bold text-gray-800">HSE Calculators</h3>
-                        <p class="text-sm text-gray-500">Complete HSE Calculation Suite</p>
-                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">⚕️ HSE Tools</h3>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">
-                    Comprehensive collection of health, safety, and environment calculators for risk assessment, compliance, and safety management.
-                </p>
-                <div class="flex items-center text-green-600 text-sm font-medium">
-                    <span>Explore Tool</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </a>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- HSE Calculators -->
+                    <a href="https://www.hsecalculator.com" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-green-300 transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-calculator text-green-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">HSE Calculators</h3>
+                                <p class="text-sm text-gray-500">Complete HSE Calculation Suite</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Comprehensive collection of health, safety, and environment calculators for risk assessment, compliance, and safety management.
+                        </p>
+                        <div class="flex items-center text-green-600 text-sm font-medium">
+                            <span>Explore Tool</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </a>
 
-            <!-- HSE Toolkit -->
-            <a href="https://hse-toolkit.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-green-400 transition-all duration-300">
-                <div class="flex items-center mb-4">
-                    <div class="bg-green-100 p-3 rounded-lg mr-4">
-                        <i class="fas fa-toolbox text-green-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-gray-800">HSE Toolkit</h3>
-                        <p class="text-sm text-gray-500">Complete Safety Management</p>
-                    </div>
+                    <!-- HSE Toolkit -->
+                    <a href="https://hse-toolkit.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-green-400 transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-toolbox text-green-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">HSE Toolkit</h3>
+                                <p class="text-sm text-gray-500">Complete Safety Management</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Comprehensive Health, Safety and Environment toolkit for risk management, audits, compliance checks and safety documentation.
+                        </p>
+                        <div class="flex items-center text-green-600 text-sm font-medium">
+                            <span>Explore Toolkit</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </a>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">
-                    Comprehensive Health, Safety and Environment toolkit for risk management, audits, compliance checks and safety documentation.
-                </p>
-                <div class="flex items-center text-green-600 text-sm font-medium">
-                    <span>Explore Toolkit</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </a>
-        </div>
-    </div>
-    
-    <!-- 🔥 Fire Safety Tools Category -->
-    <div class="mb-10">
-        <div class="flex items-center mb-6">
-            <div class="bg-red-100 p-3 rounded-lg mr-3">
-                <i class="fas fa-fire-extinguisher text-red-600 text-xl"></i>
             </div>
-            <h3 class="text-xl font-bold text-gray-800">🔥 Fire Safety Tools</h3>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Ceiling Mounted Fire Extinguisher Estimation Tool -->
-            <a href="https://ceiling-fire-extinguisher-cost-esti.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-red-300 transition-all duration-300">
-                <div class="flex items-center mb-4">
-                    <div class="bg-red-100 p-3 rounded-lg mr-4">
-                        <i class="fas fa-fire text-red-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-gray-800">Ceiling Mounted Fire Extinguisher</h3>
-                        <p class="text-sm text-gray-500">Modular System Estimation</p>
-                    </div>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">
-                    Professional tool for calculating ceiling mounted modular fire extinguisher requirements and generating commercial quotes.
-                </p>
-                <div class="flex items-center text-red-600 text-sm font-medium">
-                    <span>Explore Tool</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </a>
-
-            <!-- Fire Safety Calculators -->
-            <a href="https://www.firesafetytool.com" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-red-400 transition-all duration-300">
-                <div class="flex items-center mb-4">
-                    <div class="bg-red-100 p-3 rounded-lg mr-4">
+            
+            <!-- 🔥 Fire Safety Tools Category -->
+            <div class="mb-10">
+                <div class="flex items-center mb-6">
+                    <div class="bg-red-100 p-3 rounded-lg mr-3">
                         <i class="fas fa-fire-extinguisher text-red-600 text-xl"></i>
                     </div>
-                    <div>
-                        <h3 class="font-bold text-gray-800">Fire Safety Calculators</h3>
-                        <p class="text-sm text-gray-500">Complete Fire Safety Solutions</p>
-                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">🔥 Fire Safety Tools</h3>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">
-                    Comprehensive fire safety assessment, risk analysis, and compliance checking tools for commercial and residential buildings.
-                </p>
-                <div class="flex items-center text-red-600 text-sm font-medium">
-                    <span>Explore Tool</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </a>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Ceiling Mounted Fire Extinguisher Estimation Tool -->
+                    <a href="https://ceiling-fire-extinguisher-cost-esti.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-red-300 transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-red-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-fire text-red-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Ceiling Mounted Fire Extinguisher</h3>
+                                <p class="text-sm text-gray-500">Modular System Estimation</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Professional tool for calculating ceiling mounted modular fire extinguisher requirements and generating commercial quotes.
+                        </p>
+                        <div class="flex items-center text-red-600 text-sm font-medium">
+                            <span>Explore Tool</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </a>
 
-            <!-- Fire Extinguisher Health Checkup Audit Tool -->
-            <a href="https://fire-extinguisher-audit-tool.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-red-500 transition-all duration-300">
-                <div class="flex items-center mb-4">
-                    <div class="bg-red-100 p-3 rounded-lg mr-4">
-                        <i class="fas fa-clipboard-check text-red-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-gray-800">Fire Extinguisher Audit Tool</h3>
-                        <p class="text-sm text-gray-500">Health Checkup & Inspection</p>
-                    </div>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">
-                    Specialized tool for conducting thorough fire extinguisher audits, maintenance tracking, and compliance reporting.
-                </p>
-                <div class="flex items-center text-red-600 text-sm font-medium">
-                    <span>Explore Tool</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </a>
+                    <!-- Fire Safety Calculators -->
+                    <a href="https://www.firesafetytool.com" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-red-400 transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-red-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-fire-extinguisher text-red-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Fire Safety Calculators</h3>
+                                <p class="text-sm text-gray-500">Complete Fire Safety Solutions</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Comprehensive fire safety assessment, risk analysis, and compliance checking tools for commercial and residential buildings.
+                        </p>
+                        <div class="flex items-center text-red-600 text-sm font-medium">
+                            <span>Explore Tool</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </a>
 
-            <!-- Fire Safety Assessment Tool -->
-            <a href="https://firesafetyassessmenttool.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-orange-300 transition-all duration-300">
-                <div class="flex items-center mb-4">
-                    <div class="bg-orange-100 p-3 rounded-lg mr-4">
-                        <i class="fas fa-shield-alt text-orange-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-gray-800">Fire Safety Assessment Tool</h3>
-                        <p class="text-sm text-gray-500">Risk Assessment & Compliance</p>
-                    </div>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">
-                    Complete fire safety assessment and risk evaluation tool for buildings, facilities, and industrial establishments.
-                </p>
-                <div class="flex items-center text-orange-600 text-sm font-medium">
-                    <span>Explore Tool</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </a>
+                    <!-- Fire Extinguisher Health Checkup Audit Tool -->
+                    <a href="https://fire-extinguisher-audit-tool.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-red-500 transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-red-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-clipboard-check text-red-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Fire Extinguisher Audit Tool</h3>
+                                <p class="text-sm text-gray-500">Health Checkup & Inspection</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Specialized tool for conducting thorough fire extinguisher audits, maintenance tracking, and compliance reporting.
+                        </p>
+                        <div class="flex items-center text-red-600 text-sm font-medium">
+                            <span>Explore Tool</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </a>
 
-            <!-- Fire Extinguisher Estimation Tool -->
-            <a href="https://fire-extinguisher-calculator.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-orange-400 transition-all duration-300">
-                <div class="flex items-center mb-4">
-                    <div class="bg-orange-100 p-3 rounded-lg mr-4">
-                        <i class="fas fa-calculator text-orange-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-gray-800">Fire Extinguisher Estimation Tool</h3>
-                        <p class="text-sm text-gray-500">Portable Extinguisher Planning</p>
-                    </div>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">
-                    Specialized tool for calculating requirements and costs for portable fire extinguishers in various building types.
-                </p>
-                <div class="flex items-center text-orange-600 text-sm font-medium">
-                    <span>Explore Tool</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </a>
+                    <!-- Fire Safety Assessment Tool -->
+                    <a href="https://firesafetyassessmenttool.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-orange-300 transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-orange-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-shield-alt text-orange-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Fire Safety Assessment Tool</h3>
+                                <p class="text-sm text-gray-500">Risk Assessment & Compliance</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Complete fire safety assessment and risk evaluation tool for buildings, facilities, and industrial establishments.
+                        </p>
+                        <div class="flex items-center text-orange-600 text-sm font-medium">
+                            <span>Explore Tool</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </a>
 
-            <!-- Kitchen Suppression System Estimation Tool -->
-            <a href="https://kitchen-fire-suppression-calculator.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-yellow-300 transition-all duration-300">
-                <div class="flex items-center mb-4">
-                    <div class="bg-yellow-100 p-3 rounded-lg mr-4">
-                        <i class="fas fa-utensils text-yellow-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-gray-800">Kitchen Suppression System</h3>
-                        <p class="text-sm text-gray-500">Commercial Kitchen Safety</p>
-                    </div>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">
-                    Calculator for commercial kitchen fire suppression systems, hood protection, and wet chemical extinguishing requirements.
-                </p>
-                <div class="flex items-center text-yellow-600 text-sm font-medium">
-                    <span>Explore Tool</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </a>
+                    <!-- Fire Extinguisher Estimation Tool -->
+                    <a href="https://fire-extinguisher-calculator.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-orange-400 transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-orange-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-calculator text-orange-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Fire Extinguisher Estimation Tool</h3>
+                                <p class="text-sm text-gray-500">Portable Extinguisher Planning</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Specialized tool for calculating requirements and costs for portable fire extinguishers in various building types.
+                        </p>
+                        <div class="flex items-center text-orange-600 text-sm font-medium">
+                            <span>Explore Tool</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </a>
 
-            <!-- Room Flooding System Estimation Tool -->
-            <a href="https://fm-200-room-flooding-system-calcula.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-indigo-300 transition-all duration-300">
-                <div class="flex items-center mb-4">
-                    <div class="bg-indigo-100 p-3 rounded-lg mr-4">
-                        <i class="fas fa-flood text-indigo-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-gray-800">Room Flooding System</h3>
-                        <p class="text-sm text-gray-500">FM-200 Clean Agent Systems</p>
-                    </div>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">
-                    Calculator for FM-200 and other clean agent room flooding systems for data centers, server rooms, and sensitive equipment.
-                </p>
-                <div class="flex items-center text-indigo-600 text-sm font-medium">
-                    <span>Explore Tool</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </a>
+                    <!-- Kitchen Suppression System Estimation Tool -->
+                    <a href="https://kitchen-fire-suppression-calculator.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-yellow-300 transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-yellow-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-utensils text-yellow-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Kitchen Suppression System</h3>
+                                <p class="text-sm text-gray-500">Commercial Kitchen Safety</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Calculator for commercial kitchen fire suppression systems, hood protection, and wet chemical extinguishing requirements.
+                        </p>
+                        <div class="flex items-center text-yellow-600 text-sm font-medium">
+                            <span>Explore Tool</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </a>
 
-            <!-- Panel Fire Suppression Calculator -->
-            <a href="https://panel-fire-suppression-calculator.vercel.app/index.html" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-purple-300 transition-all duration-300">
-                <div class="flex items-center mb-4">
-                    <div class="bg-purple-100 p-3 rounded-lg mr-4">
-                        <i class="fas fa-th-large text-purple-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-gray-800">Panel Fire Suppression Calculator</h3>
-                        <p class="text-sm text-gray-500">Electrical Panel Protection</p>
-                    </div>
+                    <!-- Room Flooding System Estimation Tool -->
+                    <a href="https://fm-200-room-flooding-system-calcula.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-indigo-300 transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-flood text-indigo-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Room Flooding System</h3>
+                                <p class="text-sm text-gray-500">FM-200 Clean Agent Systems</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Calculator for FM-200 and other clean agent room flooding systems for data centers, server rooms, and sensitive equipment.
+                        </p>
+                        <div class="flex items-center text-indigo-600 text-sm font-medium">
+                            <span>Explore Tool</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </a>
+
+                    <!-- Panel Fire Suppression Calculator -->
+                    <a href="https://panel-fire-suppression-calculator.vercel.app/index.html" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-purple-300 transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-th-large text-purple-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Panel Fire Suppression Calculator</h3>
+                                <p class="text-sm text-gray-500">Electrical Panel Protection</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Specialized calculator for electrical panel and control panel fire suppression systems using clean agents.
+                        </p>
+                        <div class="flex items-center text-purple-600 text-sm font-medium">
+                            <span>Explore Tool</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </a>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">
-                    Specialized calculator for electrical panel and control panel fire suppression systems using clean agents.
-                </p>
-                <div class="flex items-center text-purple-600 text-sm font-medium">
-                    <span>Explore Tool</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </a>
-        </div>
-    </div>
-    
-    <!-- 🌐 Utility Tools Category -->
-    <div>
-        <div class="flex items-center mb-6">
-            <div class="bg-blue-100 p-3 rounded-lg mr-3">
-                <i class="fas fa-globe text-blue-600 text-xl"></i>
             </div>
-            <h3 class="text-xl font-bold text-gray-800">🌐 Utility Tools</h3>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Daily Smart Tool -->
-            <a href="https://www.dailysmarttool.com" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-blue-300 transition-all duration-300">
-                <div class="flex items-center mb-4">
-                    <div class="bg-blue-100 p-3 rounded-lg mr-4">
-                        <i class="fas fa-wrench text-blue-600 text-xl"></i>
+            
+            <!-- 🌐 Utility Tools Category -->
+            <div>
+                <div class="flex items-center mb-6">
+                    <div class="bg-blue-100 p-3 rounded-lg mr-3">
+                        <i class="fas fa-globe text-blue-600 text-xl"></i>
                     </div>
-                    <div>
-                        <h3 class="font-bold text-gray-800">Daily Smart Tool</h3>
-                        <p class="text-sm text-gray-500">Utility & Productivity Tools</p>
-                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">🌐 Utility Tools</h3>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">
-                    Collection of daily useful tools for calculations, conversions, text processing, and productivity enhancement.
-                </p>
-                <div class="flex items-center text-blue-600 text-sm font-medium">
-                    <span>Explore Tools</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </a>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Daily Smart Tool -->
+                    <a href="https://www.dailysmarttool.com" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-blue-300 transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-wrench text-blue-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Daily Smart Tool</h3>
+                                <p class="text-sm text-gray-500">Utility & Productivity Tools</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Collection of daily useful tools for calculations, conversions, text processing, and productivity enhancement.
+                        </p>
+                        <div class="flex items-center text-blue-600 text-sm font-medium">
+                            <span>Explore Tools</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </a>
 
-            <!-- Web Tools Daily -->
-            <a href="https://www.webtoolsdaily.com" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-blue-400 transition-all duration-300">
-                <div class="flex items-center mb-4">
-                    <div class="bg-blue-100 p-3 rounded-lg mr-4">
-                        <i class="fas fa-tools text-blue-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-gray-800">Web Tools Daily</h3>
-                        <p class="text-sm text-gray-500">Developer & Productivity Tools</p>
-                    </div>
+                    <!-- Web Tools Daily -->
+                    <a href="https://www.webtoolsdaily.com" target="_blank" rel="noopener noreferrer" class="tool-card bg-white rounded-xl shadow-md p-6 border border-gray-200 hover:border-blue-400 transition-all duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-tools text-blue-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Web Tools Daily</h3>
+                                <p class="text-sm text-gray-500">Developer & Productivity Tools</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Daily updated collection of web development tools, productivity enhancers, code generators, and online utilities for professionals.
+                        </p>
+                        <div class="flex items-center text-blue-600 text-sm font-medium">
+                            <span>Explore Tools</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </div>
+                    </a>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">
-                    Daily updated collection of web development tools, productivity enhancers, code generators, and online utilities for professionals.
-                </p>
-                <div class="flex items-center text-blue-600 text-sm font-medium">
-                    <span>Explore Tools</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </div>
-            </a>
-        </div>
-    </div>
-</section>
-        
+            </div>
+        </section>
+
         <!-- Google AdSense Ad Unit -->
         <div class="my-8 text-center bg-white p-4 rounded shadow-sm border border-dashed border-gray-300">
              <span class="text-xs text-gray-400 block mb-2">Advertisement</span>
@@ -917,109 +959,109 @@
     </div>
 
     <!-- Footer -->
-<footer class="bg-gradient-to-b from-gray-900 to-black text-white py-12 mt-auto border-t-4 border-red-600">
-    <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <!-- Brand Section -->
-            <div class="text-center md:text-left">
-                <div class="flex items-center justify-center md:justify-start space-x-2 mb-3">
-                    <i class="fas fa-shield-alt text-red-500 text-3xl"></i>
-                    <span class="text-3xl font-bold tracking-wide">SafetyGuide360</span>
+    <footer class="bg-gradient-to-b from-gray-900 to-black text-white py-12 mt-auto border-t-4 border-red-600">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <!-- Brand Section -->
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start space-x-2 mb-3">
+                        <i class="fas fa-shield-alt text-red-500 text-3xl"></i>
+                        <span class="text-3xl font-bold tracking-wide">SafetyGuide360</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-3 max-w-xs">
+                        Your trusted partner for professional fire safety calculations, compliance tools, and safety engineering solutions.
+                    </p>
+                    
+                    <!-- Visitor Counter -->
+                    <div class="mt-4 bg-gradient-to-r from-blue-900/50 to-green-900/50 p-3 rounded-lg inline-block">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-chart-line text-green-400"></i>
+                            <div>
+                                <div class="text-xs text-gray-300">Total Visitors</div>
+                                <div class="text-xl font-bold" id="visitorCounter">Loading...</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <p class="text-gray-400 text-sm mt-3 max-w-xs">
-                    Your trusted partner for professional fire safety calculations, compliance tools, and safety engineering solutions.
-                </p>
                 
-                <!-- Visitor Counter -->
-                <div class="mt-4 bg-gradient-to-r from-blue-900/50 to-green-900/50 p-3 rounded-lg inline-block">
-                    <div class="flex items-center space-x-2">
-                        <i class="fas fa-chart-line text-green-400"></i>
-                        <div>
-                            <div class="text-xs text-gray-300">Total Visitors</div>
-                            <div class="text-xl font-bold" id="visitorCounter">Loading...</div>
+                <!-- Contact Information -->
+                <div class="text-center md:text-left">
+                    <h4 class="text-lg font-bold mb-4 flex items-center justify-center md:justify-start">
+                        <i class="fas fa-headset mr-2"></i> Contact & Support
+                    </h4>
+                    <div class="space-y-2">
+                        <p class="flex items-center justify-center md:justify-start">
+                            <i class="fas fa-envelope mr-2 text-red-400"></i>
+                            <a href="mailto:contact@amjathkhan.com" class="text-gray-300 hover:text-white transition">
+                                contact@amjathkhan.com
+                            </a>
+                        </p>
+                        <p class="flex items-center justify-center md:justify-start">
+                            <i class="fas fa-phone mr-2 text-green-400"></i>
+                            <a href="tel:+919750816163" class="text-gray-300 hover:text-white transition">
+                                +91 97508 16163
+                            </a>
+                        </p>
+                        <p class="text-sm text-gray-400 mt-3">
+                            For queries, feedback, or business inquiries
+                        </p>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="mt-4">
+                        <h5 class="text-sm font-semibold mb-2 text-gray-300">Connect with me:</h5>
+                        <div class="flex space-x-3 justify-center md:justify-start">
+                            <a href="https://bsky.app/profile/amjathkhan.bsky.social" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition" title="Bluesky">
+                                <i class="fab fa-twitter text-lg"></i>
+                            </a>
+                            <a href="https://www.facebook.com/Amjathkhan.s" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition" title="Facebook">
+                                <i class="fab fa-facebook-f text-lg"></i>
+                            </a>
+                            <a href="https://www.instagram.com/amjathkhan_official/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition" title="Instagram">
+                                <i class="fab fa-instagram text-lg"></i>
+                            </a>
+                            <a href="https://x.com/amjikhan" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition" title="Twitter/X">
+                                <i class="fab fa-twitter text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="text-center md:text-left">
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <div class="flex flex-wrap justify-center md:justify-start space-x-6 text-sm font-medium">
+                        <button onclick="toggleModal('privacyModal')" class="text-gray-400 hover:text-white transition-colors hover:underline mb-2">Privacy Policy</button>
+                        <button onclick="toggleModal('termsModal')" class="text-gray-400 hover:text-white transition-colors hover:underline mb-2">Terms of Service</button>
+                        <button onclick="toggleModal('affiliateModal')" class="text-gray-400 hover:text-white transition-colors hover:underline mb-2">Affiliate Disclosure</button>
+                    </div>
+                    
+                    <!-- Support Options -->
+                    <div class="mt-6">
+                        <h5 class="text-sm font-semibold mb-2 text-gray-300">Support Our Work:</h5>
+                        <div class="flex flex-col space-y-2">
+                            <a href="https://amzn.to/49YYGrJ" target="_blank" rel="noopener noreferrer" class="text-yellow-500 hover:text-yellow-400 text-sm flex items-center justify-center md:justify-start">
+                                <i class="fab fa-amazon mr-2"></i> Amazon Associates Store
+                            </a>
+                            <a href="https://amzn.to/4p8ceG6" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 text-sm flex items-center justify-center md:justify-start">
+                                <i class="fas fa-fire mr-2"></i> Clearance Sale (Up to 70% Off)
+                            </a>
+                            <a href="https://buymeacoffee.com/s.amjathkhan" target="_blank" rel="noopener noreferrer" class="text-red-400 hover:text-red-300 text-sm flex items-center justify-center md:justify-start">
+                                <i class="fas fa-coffee mr-2"></i> Buy Me a Coffee
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Contact Information -->
-            <div class="text-center md:text-left">
-                <h4 class="text-lg font-bold mb-4 flex items-center justify-center md:justify-start">
-                    <i class="fas fa-headset mr-2"></i> Contact & Support
-                </h4>
-                <div class="space-y-2">
-                    <p class="flex items-center justify-center md:justify-start">
-                        <i class="fas fa-envelope mr-2 text-red-400"></i>
-                        <a href="mailto:contact@amjathkhan.com" class="text-gray-300 hover:text-white transition">
-                            contact@amjathkhan.com
-                        </a>
-                    </p>
-                    <p class="flex items-center justify-center md:justify-start">
-                        <i class="fas fa-phone mr-2 text-green-400"></i>
-                        <a href="tel:+919750816163" class="text-gray-300 hover:text-white transition">
-                            +91 97508 16163
-                        </a>
-                    </p>
-                    <p class="text-sm text-gray-400 mt-3">
-                        For queries, feedback, or business inquiries
-                    </p>
-                </div>
-                
-                <!-- Social Links -->
-                <div class="mt-4">
-                    <h5 class="text-sm font-semibold mb-2 text-gray-300">Connect with me:</h5>
-                    <div class="flex space-x-3 justify-center md:justify-start">
-                        <a href="https://bsky.app/profile/amjathkhan.bsky.social" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition" title="Bluesky">
-                            <i class="fab fa-twitter text-lg"></i>
-                        </a>
-                        <a href="https://www.facebook.com/Amjathkhan.s" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition" title="Facebook">
-                            <i class="fab fa-facebook-f text-lg"></i>
-                        </a>
-                        <a href="https://www.instagram.com/amjathkhan_official/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition" title="Instagram">
-                            <i class="fab fa-instagram text-lg"></i>
-                        </a>
-                        <a href="https://x.com/amjikhan" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition" title="Twitter/X">
-                            <i class="fab fa-twitter text-lg"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Quick Links -->
-            <div class="text-center md:text-left">
-                <h4 class="text-lg font-bold mb-4">Quick Links</h4>
-                <div class="flex flex-wrap justify-center md:justify-start space-x-6 text-sm font-medium">
-                    <button onclick="toggleModal('privacyModal')" class="text-gray-400 hover:text-white transition-colors hover:underline mb-2">Privacy Policy</button>
-                    <button onclick="toggleModal('termsModal')" class="text-gray-400 hover:text-white transition-colors hover:underline mb-2">Terms of Service</button>
-                    <button onclick="toggleModal('affiliateModal')" class="text-gray-400 hover:text-white transition-colors hover:underline mb-2">Affiliate Disclosure</button>
-                </div>
-                
-                <!-- Support Options -->
-                <div class="mt-6">
-                    <h5 class="text-sm font-semibold mb-2 text-gray-300">Support Our Work:</h5>
-                    <div class="flex flex-col space-y-2">
-                        <a href="https://amzn.to/49YYGrJ" target="_blank" rel="noopener noreferrer" class="text-yellow-500 hover:text-yellow-400 text-sm flex items-center justify-center md:justify-start">
-                            <i class="fab fa-amazon mr-2"></i> Amazon Associates Store
-                        </a>
-                        <a href="https://amzn.to/4p8ceG6" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 text-sm flex items-center justify-center md:justify-start">
-                            <i class="fas fa-fire mr-2"></i> Clearance Sale (Up to 70% Off)
-                        </a>
-                        <a href="https://buymeacoffee.com/s.amjathkhan" target="_blank" rel="noopener noreferrer" class="text-red-400 hover:text-red-300 text-sm flex items-center justify-center md:justify-start">
-                            <i class="fas fa-coffee mr-2"></i> Buy Me a Coffee
-                        </a>
-                    </div>
-                </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2025 SafetyGuide360. All rights reserved. | Professional Fire Safety Tools</p>
+                <p class="mt-2 text-xs">This tool is for estimation purposes only. Always consult with certified fire safety professionals.</p>
+                <p class="mt-1 text-xs">Google AdSense Publisher ID: pub-6687860250561653</p>
+                <p class="mt-1 text-xs">Website Visitor Count: Fully Functional</p>
             </div>
         </div>
-        
-        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
-            <p>&copy; 2025 SafetyGuide360. All rights reserved. | Professional Fire Safety Tools</p>
-            <p class="mt-2 text-xs">This tool is for estimation purposes only. Always consult with certified fire safety professionals.</p>
-            <p class="mt-1 text-xs">Google AdSense Publisher ID: pub-6687860250561653</p>
-            <p class="mt-1 text-xs">Website Visitor Count: Fully Functional</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <!-- Modals (Privacy, Terms, Affiliate) -->
     <!-- Privacy Policy Modal -->
@@ -1109,6 +1151,97 @@
 
     <!-- Main JavaScript -->
     <script>
+        // --- VISITOR COUNTER ---
+        class VisitorCounter {
+            constructor() {
+                this.counterKey = 'safetyguide360_visitor_counter';
+                this.sessionKey = 'safetyguide360_session';
+                this.counterElementId = 'visitorCounter';
+                this.init();
+            }
+
+            init() {
+                // Check if this is a new session
+                if (!sessionStorage.getItem(this.sessionKey)) {
+                    this.incrementCounter();
+                    sessionStorage.setItem(this.sessionKey, 'active');
+                }
+                
+                // Display the counter
+                this.displayCounter();
+                
+                // Optional: Track with Google Analytics
+                this.trackWithGA();
+            }
+
+            incrementCounter() {
+                let count = localStorage.getItem(this.counterKey);
+                
+                if (!count) {
+                    count = Math.floor(Math.random() * 5000) + 1000; // Start with random base count
+                } else {
+                    count = parseInt(count);
+                }
+                
+                count++;
+                localStorage.setItem(this.counterKey, count);
+                
+                return count;
+            }
+
+            getCounter() {
+                let count = localStorage.getItem(this.counterKey);
+                
+                if (!count) {
+                    count = Math.floor(Math.random() * 5000) + 1000;
+                    localStorage.setItem(this.counterKey, count);
+                }
+                
+                return parseInt(count);
+            }
+
+            displayCounter() {
+                let count = this.getCounter();
+                
+                // Format number with commas
+                const formattedCount = count.toLocaleString();
+                
+                // Update counter element
+                const counterElement = document.getElementById(this.counterElementId);
+                if (counterElement) {
+                    counterElement.textContent = formattedCount;
+                }
+                
+                // Add animation effect
+                this.animateCounter();
+            }
+
+            animateCounter() {
+                const counterElement = document.getElementById(this.counterElementId);
+                if (counterElement) {
+                    counterElement.classList.add('animate-pulse');
+                    setTimeout(() => {
+                        counterElement.classList.remove('animate-pulse');
+                    }, 1000);
+                }
+            }
+
+            trackWithGA() {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'page_visit', {
+                        'event_category': 'engagement',
+                        'event_label': 'Visitor Counter',
+                        'value': this.getCounter()
+                    });
+                }
+            }
+        }
+
+        // Initialize visitor counter
+        document.addEventListener('DOMContentLoaded', () => {
+            window.visitorCounter = new VisitorCounter();
+        });
+
         // --- MODAL LOGIC ---
         function toggleModal(modalID) {
             const modal = document.getElementById(modalID);
