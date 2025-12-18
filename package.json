@@ -1,7 +1,7 @@
 {
   "name": "safetyguide360-fire-extinguisher-calculator",
-  "version": "2.0.0",
-  "description": "Professional ceiling mounted modular fire extinguisher calculator with PDF/Excel quotes - SafetyGuide360",
+  "version": "2.1.0",
+  "description": "Professional ceiling mounted modular fire extinguisher calculator with PDF/Excel quotes and visitor tracking - SafetyGuide360",
   "main": "index.html",
   "scripts": {
     "start": "serve .",
@@ -18,20 +18,21 @@
     "safety-engineering",
     "fire-protection",
     "commercial-quote",
+    "visitor-counter",
     "safetyguide360"
   ],
-  "author": "SafetyGuide360",
+  "author": "SafetyGuide360 | Amjath Khan",
   "license": "MIT",
   "dependencies": {
     "serve": "^14.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AmjathKhan001/Ceiling-Fire-Extinguisher-Cost-Estimation-Tool"
+    "url": "https://github.com/AmjathKhan001/Safetyguide360-Ceilingmounted-Fireextinguisher-Cost-Estimation-Tool"
   },
   "homepage": "https://safetyguide360.com",
   "bugs": {
-    "url": "https://github.com/AmjathKhan001/Ceiling-Fire-Extinguisher-Cost-Estimation-Tool/issues"
+    "url": "https://github.com/AmjathKhan001/Safetyguide360-Ceilingmounted-Fireextinguisher-Cost-Estimation-Tool/issues"
   },
   "engines": {
     "node": ">=14.0.0"
